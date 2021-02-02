@@ -21,6 +21,15 @@ const User = objectType({
   },
 })
 
+const Package = objectType({
+  name: 'Package',
+  definition(t) {
+    t.model.id()
+    t.model.delivered()
+    t.model.description()
+  },
+})
+
 const Post = objectType({
   name: 'Post',
   definition(t) {
@@ -45,7 +54,18 @@ const Profile = objectType({
 const Query = objectType({
   name: 'Query',
   definition(t) {
+    //crud defaults
     t.crud.post()
+    t.crud.package()
+
+    t.list.field('notDelivered', {
+      type: 'Package',
+      resolve: (_, args, ctx) => {
+        return ctx.prisma.package.findMany({
+          where: { delivered: false },
+        })
+      },
+    })
 
     t.list.field('feed', {
       type: 'Post',
@@ -81,6 +101,9 @@ const Mutation = objectType({
     t.crud.createOneUser({ alias: 'signupUser' })
     t.crud.deleteOnePost()
 
+    t.crud.createOnePackage()
+    t.crud.updateOnePackage()
+
     t.field('createDraft', {
       type: 'Post',
       args: {
@@ -102,34 +125,6 @@ const Mutation = objectType({
       },
     })
 
-    /*     t.nullable.field('edit', {
-      type: 'Post',
-      args: {
-        id: intArg(),
-        name: stringArg(),
-      },
-      resolve: (_, { id, name }, ctx) => {
-        return ctx.prisma.user.update({
-          where: { id: Number(id) },
-          data: { name },
-        })
-      },
-    }) */
-
-    t.nullable.field('editUserName', {
-      type: 'User',
-      args: {
-        id: intArg(),
-        name: stringArg(),
-      },
-      resolve: (_, { id, name }, ctx) => {
-        return ctx.prisma.post.update({
-          where: { id: Number(id) },
-          data: { name: name },
-        })
-      },
-    })
-
     t.nullable.field('publish', {
       type: 'Post',
       args: {
@@ -146,7 +141,7 @@ const Mutation = objectType({
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Post, User, Profile],
+  types: [Query, Mutation, Post, User, Profile, Package],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: __dirname + '/../schema.graphql',

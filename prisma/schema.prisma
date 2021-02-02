@@ -30,3 +30,9 @@ model Post {
   title     String
   author    User?   @relation(fields: [authorId], references: [id])
 }
+
+model Package {
+  id        Int     @default(autoincrement()) @id
+  delivered Boolean @default(false)
+  description String 
+}

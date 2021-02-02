@@ -2,12 +2,37 @@
 ### Do not make changes to this file directly
 
 
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
 type Mutation {
   createDraft(authorEmail: String!, content: String, title: String!): Post
+  createOnePackage(data: PackageCreateInput!): Package!
   deleteOnePost(where: PostWhereUniqueInput!): Post
-  editUserName(id: Int, name: String): User
   publish(id: Int): Post
   signupUser(data: UserCreateInput!): User!
+  updateOnePackage(data: PackageUpdateInput!, where: PackageWhereUniqueInput!): Package
+}
+
+type Package {
+  delivered: Boolean!
+  description: String!
+  id: Int!
+}
+
+input PackageCreateInput {
+  delivered: Boolean
+  description: String!
+}
+
+input PackageUpdateInput {
+  delivered: BoolFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+}
+
+input PackageWhereUniqueInput {
+  id: Int
 }
 
 type Post {
@@ -69,7 +94,13 @@ input ProfileWhereUniqueInput {
 type Query {
   feed: [Post]
   filterPosts(searchString: String): [Post]
+  notDelivered: [Package]
+  package(where: PackageWhereUniqueInput!): Package
   post(where: PostWhereUniqueInput!): Post
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
 }
 
 type User {
