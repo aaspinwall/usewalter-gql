@@ -15,6 +15,7 @@ model User {
   profile Profile?
 }
 
+
 model Profile {
   id Int @default(autoincrement()) @id
   bio String?
