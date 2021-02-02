@@ -17,6 +17,7 @@ const User = objectType({
     t.model.posts({
       pagination: false,
     })
+    t.model.profile()
   },
 })
 
@@ -29,6 +30,15 @@ const Post = objectType({
     t.model.published()
     t.model.author()
     t.model.authorId()
+  },
+})
+
+const Profile = objectType({
+  name: 'Profile',
+  definition(t) {
+    t.model.id()
+    t.model.bio()
+    t.model.user()
   },
 })
 
@@ -92,6 +102,34 @@ const Mutation = objectType({
       },
     })
 
+    /*     t.nullable.field('edit', {
+      type: 'Post',
+      args: {
+        id: intArg(),
+        name: stringArg(),
+      },
+      resolve: (_, { id, name }, ctx) => {
+        return ctx.prisma.user.update({
+          where: { id: Number(id) },
+          data: { name },
+        })
+      },
+    }) */
+
+    t.nullable.field('editUserName', {
+      type: 'User',
+      args: {
+        id: intArg(),
+        name: stringArg(),
+      },
+      resolve: (_, { id, name }, ctx) => {
+        return ctx.prisma.post.update({
+          where: { id: Number(id) },
+          data: { name: name },
+        })
+      },
+    })
+
     t.nullable.field('publish', {
       type: 'Post',
       args: {
@@ -108,7 +146,7 @@ const Mutation = objectType({
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Post, User],
+  types: [Query, Mutation, Post, User, Profile],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: __dirname + '/../schema.graphql',

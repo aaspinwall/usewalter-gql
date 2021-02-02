@@ -5,6 +5,7 @@
 type Mutation {
   createDraft(authorEmail: String!, content: String, title: String!): Post
   deleteOnePost(where: PostWhereUniqueInput!): Post
+  editUserName(id: Int, name: String): User
   publish(id: Int): Post
   signupUser(data: UserCreateInput!): User!
 }
@@ -39,6 +40,32 @@ input PostWhereUniqueInput {
   id: Int
 }
 
+type Profile {
+  bio: String
+  id: Int!
+  user: User!
+}
+
+input ProfileCreateNestedOneWithoutUserInput {
+  connect: ProfileWhereUniqueInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+  create: ProfileCreateWithoutUserInput
+}
+
+input ProfileCreateOrConnectWithoutuserInput {
+  create: ProfileCreateWithoutUserInput!
+  where: ProfileWhereUniqueInput!
+}
+
+input ProfileCreateWithoutUserInput {
+  bio: String
+}
+
+input ProfileWhereUniqueInput {
+  id: Int
+  userID: Int
+}
+
 type Query {
   feed: [Post]
   filterPosts(searchString: String): [Post]
@@ -50,10 +77,12 @@ type User {
   id: Int!
   name: String
   posts: [Post!]!
+  profile: Profile
 }
 
 input UserCreateInput {
   email: String!
   name: String
   posts: PostCreateNestedManyWithoutAuthorInput
+  profile: ProfileCreateNestedOneWithoutUserInput
 }
