@@ -25,6 +25,8 @@ const Layout = ({ children, title }) => {
 export default Layout;
 
 const BodyWrapper = styled.div`
+  max-width: 1000px;
+  margin: auto;
   background: white;
   height: 100vh;
   display: flex;

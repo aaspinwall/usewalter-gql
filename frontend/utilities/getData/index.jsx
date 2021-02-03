@@ -34,28 +34,35 @@ const GetData = () => {
 
   return (
     <Container>
-      <ShadowBox>
-        {packageData.map((pak) => {
-          const { id, description, delivered } = pak;
-          return (
-            <div key={`packages-${id}`}>
-              <div>{description}</div>
-              <div>{delivered ? "delivered" : "pending"}</div>
-            </div>
-          );
-        })}
-      </ShadowBox>
+      {packageData.map((pak) => {
+        const { id, description, delivered } = pak;
+        return (
+          <Results className='box title-light ' key={`packages-${id}`}>
+            <div>{description}</div>
+            <div>403</div>
+            <div>{delivered ? "delivered" : "pending"}</div>
+          </Results>
+        );
+      })}
     </Container>
   );
 };
 
-const ShadowBox = styled.div``;
+const Results = styled.div`
+  display: grid;
+  grid-template-columns: 50% 1fr 1fr;
+
+  > * {
+    width: 100%;
+    align-self: center;
+  }
+`;
 
 const Container = styled.div`
-  height: 100vh;
+  /*   height: 100vh;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
 `;
 
 const Header = styled.h1`

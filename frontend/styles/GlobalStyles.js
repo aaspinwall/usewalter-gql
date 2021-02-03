@@ -5,9 +5,7 @@ const GlobalStyles = createGlobalStyle`
 	body {
 		padding: 0;
 		margin: 0;
-		font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-		// setting the font size 10px globally so that we can use rem to change font-size elsewhere
+		font-family: "Source Sans Pro", sans-serif;
 		font-size: 14px;
 	}
 	

@@ -107,15 +107,15 @@ export default function CreateRoomForm() {
           <RoomName>
             <Label>
               Room Name
-              <Input type="text" placeholder="Room Name" ref={createRoomName} />
+              <Input type='text' placeholder='Room Name' ref={createRoomName} />
             </Label>
           </RoomName>
           <TimeLimit>
             <Label>
               Time limit (in seconds)
               <Input
-                type="number"
-                placeholder="Time Limit"
+                type='number'
+                placeholder='Time Limit'
                 ref={createTimeLimit}
               />
             </Label>
@@ -125,8 +125,8 @@ export default function CreateRoomForm() {
               Add some options
               <AddOptionContainer>
                 <OptionInput
-                  type="text"
-                  placeholder="Options"
+                  type='text'
+                  placeholder='Options'
                   ref={individualOption}
                 />
                 <Button children={"+"} styles={AddOptionStyles} />
@@ -160,7 +160,7 @@ export default function CreateRoomForm() {
 }
 
 const Container = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   flex-direction: column;

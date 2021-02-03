@@ -1,14 +1,19 @@
 import React from "react";
 import GetData from "../../utilities/getData";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 const Security = () => {
   return (
-    <div>
+    <Wrapper>
       <header>Security </header>
       <button>See all packages</button>
       <button>new delivery</button>
       <GetData />
-    </div>
+    </Wrapper>
   );
 };
 

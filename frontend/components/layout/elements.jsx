@@ -5,7 +5,6 @@ import { COLORS } from "../../styles/colors";
 
 const LayoutWrapper = styled.div`
   .container {
-    min-height: 100vh;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
@@ -76,13 +75,34 @@ const LayoutWrapper = styled.div`
     font-size: 1.5rem;
   }
 
+  .title-light {
+    font-style: normal;
+    font-weight: 300;
+    font-size: calc(48px / 2);
+    line-height: calc(62px / 2);
+  }
+
   .code {
     background: #fafafa;
     border-radius: 5px;
     padding: 0.75rem;
     font-size: 1.1rem;
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+
+  .box {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+    border-radius: 23px;
+    padding: 1rem 2rem;
+  }
+
+  .flex {
+    display: flex;
+  }
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .grid {
