@@ -15,6 +15,17 @@ model User {
   profile Profile?
 }
 
+model Resident {
+  email String @unique
+  password String
+}
+
+model Faker {
+  id Int @default(autoincrement()) @id
+  email String 
+  password String
+}
+
 
 model Profile {
   id Int @default(autoincrement()) @id

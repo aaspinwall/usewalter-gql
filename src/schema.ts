@@ -21,6 +21,14 @@ const User = objectType({
   },
 })
 
+const Resident = objectType({
+  name: 'Resident',
+  definition(t) {
+    t.model.email()
+    t.model.password()
+  },
+})
+
 const Package = objectType({
   name: 'Package',
   definition(t) {
@@ -99,6 +107,28 @@ const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
     t.crud.createOneUser({ alias: 'signupUser' })
+
+    // create resident START
+
+    t.field('createResident', {
+      type: 'Resident',
+      args: {
+        email: nonNull(stringArg()),
+        password: nonNull(stringArg()),
+      },
+
+      resolve: (_, { email, password }, ctx) => {
+        return ctx.prisma.resident.create({
+          data: {
+            email,
+            password: 'a secret password was created',
+          },
+        })
+      },
+    })
+
+    // create resident END
+
     t.crud.deleteOnePost()
 
     t.crud.createOnePackage()
@@ -141,7 +171,7 @@ const Mutation = objectType({
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Post, User, Profile, Package],
+  types: [Query, Mutation, Post, User, Profile, Package, Resident],
   plugins: [nexusPrisma({ experimentalCRUD: true })],
   outputs: {
     schema: __dirname + '/../schema.graphql',
