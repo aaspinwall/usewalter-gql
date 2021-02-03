@@ -14,9 +14,7 @@ const User = objectType({
     t.model.id()
     t.model.name()
     t.model.email()
-    t.model.posts({
-      pagination: false,
-    })
+    t.model.posts({ pagination: false })
     t.model.profile()
   },
 })
@@ -65,6 +63,8 @@ const Query = objectType({
     //crud defaults
     t.crud.post()
     t.crud.package()
+    t.crud.users()
+    t.crud.residents()
 
     t.list.field('notDelivered', {
       type: 'Package',
