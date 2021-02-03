@@ -14,20 +14,53 @@ const GlobalStyles = createGlobalStyle`
 	  text-decoration: none;
 	}
 
-	button, input {
+	button {
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 1.2rem;
+		line-height: 1.6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
 		font-weight: bold;
-		letter-spacing: 0.15rem;
+		background: #B8A376;
+		color: white;
+		padding: 1rem;
+		margin: 1rem 0;
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+		border-radius: 23px;
+		border: none;
+    transition: 0.4s ease-in-out box-shadow;
+    margin: 1.5rem 0;
+    :hover,
+    :focus {
+			box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+			cursor: pointer;
+    }
+    :active {
+      box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.12);
+		}
+
+
 	}
 
-
-
-	input[type="text"]{ padding: 20px 10px; line-height: 18px; }
-
-	::placeholder {
-		color: black;
-		font-style: italic;
-
+	section{
+		max-width: 1000px;
+		margin: auto;
+		padding: 0 1rem;
 	}
+
+	header{
+		font-size: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 2rem auto;
+	}
+
+	/* input[type="text"]{ padding: 20px 10px; line-height: 18px; } */
+
+
 	
 	* {
 	  box-sizing: border-box;

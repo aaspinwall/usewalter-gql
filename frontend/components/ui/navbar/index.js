@@ -36,7 +36,7 @@ const Nav = styled.nav`
   justify-content: space-evenly;
   letter-spacing: 2.5px;
   font-size: 15px;
-  height: 70px;
+  height: 100px;
   :hover {
     cursor: pointer;
   }

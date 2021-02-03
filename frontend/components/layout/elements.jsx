@@ -91,9 +91,22 @@ const LayoutWrapper = styled.div`
   }
 
   .box {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+  }
+
+  .box {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
     border-radius: 23px;
     padding: 1rem 2rem;
+    transition: 0.4s ease-in-out box-shadow;
+    margin: 1.5rem 0;
+    :hover,
+    :focus {
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+    }
+    :active {
+      box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.12);
+    }
   }
 
   .flex {
@@ -112,6 +125,12 @@ const LayoutWrapper = styled.div`
     flex-wrap: wrap;
     max-width: 800px;
     margin-top: 3rem;
+  }
+  .full {
+    > * {
+      width: 50%;
+      margin: 1rem auto;
+    }
   }
 
   .card {

@@ -1,8 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
 
-export const GET_ALL_PACKAGES = gql`
-  query getAllPackages {
-    packages {
+export const CREATE_PACKAGE = gql`
+  mutation addPackage($description: String!, $delivered: Boolean) {
+    createOnePackage(
+      data: { description: $description, delivered: $delivered }
+    ) {
       id
       delivered
       description
@@ -10,12 +12,22 @@ export const GET_ALL_PACKAGES = gql`
   }
 `;
 
-export const GET_PACKAGE_BY_ID = gql`
-  query getPackageByID($id: Int!) {
-    package(where: { id: $id }) {
-      id
-      delivered
-      description
+export const GET_RESULTS = gql`
+  query roomResults($id: String!) {
+    roomByID(id: $id) {
+      roomData {
+        id
+        name
+        timeLimit
+        voteOptions
+        voters {
+          name
+          voteData
+        }
+      }
+      code
+      success
+      message
     }
   }
 `;

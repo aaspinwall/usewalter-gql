@@ -25,10 +25,10 @@ const Layout = ({ children, title }) => {
 export default Layout;
 
 const BodyWrapper = styled.div`
-  max-width: 1000px;
+  /* max-width: 1000px; */
   margin: auto;
   background: white;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
