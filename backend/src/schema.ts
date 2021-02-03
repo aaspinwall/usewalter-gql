@@ -63,6 +63,7 @@ const Query = objectType({
     //crud defaults
     t.crud.post()
     t.crud.package()
+    t.crud.packages()
     t.crud.users()
     t.crud.residents()
 

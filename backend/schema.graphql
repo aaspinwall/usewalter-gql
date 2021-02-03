@@ -97,6 +97,7 @@ type Query {
   filterPosts(searchString: String): [Post]
   notDelivered: [Package]
   package(where: PackageWhereUniqueInput!): Package
+  packages(after: PackageWhereUniqueInput, before: PackageWhereUniqueInput, first: Int, last: Int): [Package!]!
   post(where: PostWhereUniqueInput!): Post
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int): [Resident!]!
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!

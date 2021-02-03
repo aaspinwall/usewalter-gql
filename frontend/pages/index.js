@@ -7,23 +7,23 @@ export default function LandingPage() {
   return (
     <Container>
       <Head>
-        <title>Welcome To Agora</title>
+        <title>useWalter || Package Delivery System</title>
       </Head>
-      <Header>Agora</Header>
-      <div className="card">
-        <Link href="/room/create-room">
+      <Header>Welcome</Header>
+      <div className='card'>
+        <Link href='/room/create-room'>
           <a>Create A Room</a>
         </Link>
-        <Link href="/room/voting-room">
+        <Link href='/room/voting-room'>
           <a>Voting Room</a>
         </Link>
-        <Link href="/room/results">
+        <Link href='/room/results'>
           <a>Results</a>
         </Link>
-        <Link href="/info">
+        <Link href='/info'>
           <a>About Us</a>
         </Link>
-        <Link href="/contact">
+        <Link href='/contact'>
           <a>Contact</a>
         </Link>
       </div>

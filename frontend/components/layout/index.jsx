@@ -11,17 +11,12 @@ import { COLORS } from "../../styles/colors";
 const Layout = ({ children, title }) => {
   return (
     <LayoutWrapper>
-      {/* Head handles the metadata. Good for SEO but it doesn't get rendered */}
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <Test>
-        {/* Children passes all the page content */}
-        {children}
-      </Test>
-      {/* Footer component */}
+      <BodyWrapper>{children}</BodyWrapper>
       <Footer />
     </LayoutWrapper>
   );
@@ -29,12 +24,8 @@ const Layout = ({ children, title }) => {
 
 export default Layout;
 
-const Test = styled.div`
-  background: linear-gradient(
-    to left top,
-    ${COLORS.PURPLES.LIGHT} 50%,
-    ${COLORS.PURPLES.MAIN} 50%
-  );
+const BodyWrapper = styled.div`
+  background: white;
   height: 100vh;
   display: flex;
   align-items: center;

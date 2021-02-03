@@ -16,7 +16,6 @@ const LayoutWrapper = styled.div`
   .navbar {
     display: flex;
     justify-content: space-evenly;
-    background-color: #293241;
     font-weight: bold;
     padding: 1rem;
   }
@@ -106,15 +105,6 @@ const LayoutWrapper = styled.div`
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
   }
-
-  /* .card:hover,
-  .card:focus,
-  .card:active {
-    a {
-      color: #0070f3;
-      border-color: #0070f3;
-    }
-  } */
 
   .card h3 {
     margin: 0 0 1rem 0;

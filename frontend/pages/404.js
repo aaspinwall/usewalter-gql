@@ -6,20 +6,14 @@ import Link from "next/link";
 export default function Custom404() {
   return (
     <Wrapper>
-      <Card className="card-container">
+      <Card className='card-container'>
         <div>
           <h1>Hmm, this isn't what you're looking for...</h1>
           <h2>Try a button below!</h2>
         </div>
-        <div className="btns-center">
-          <Link href="/">
+        <div className='btns-center'>
+          <Link href='/'>
             <a>Home</a>
-          </Link>
-          <Link href="/room/create-room">
-            <a>Create A Room</a>
-          </Link>
-          <Link href="/contact">
-            <a>Contact Us</a>
           </Link>
         </div>
       </Card>

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import Layout from "../components/layout";
 import GlobalStyles from "../styles/GlobalStyles";
-// import { gql } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client";
 
 import ApolloClient from "../apollo";
