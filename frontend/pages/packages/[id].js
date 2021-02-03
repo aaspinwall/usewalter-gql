@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import { Delivered } from "../../components/ui/widgets";
+import IconCircle from "../../components/ui/icon";
 import Link from "next/link";
-import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
 import styled from "styled-components";
 import Card from "../../components/ui/card";
 import { GET_PACKAGE_BY_ID } from "../../components/polloTest/GetPackages";
 import Loading from "../../components/ui/Loading";
 import { useLazyQuery } from "@apollo/client";
-import { COLORS } from "../../styles/colors";
 import { useRouter } from "next/router";
 import Head from "next/head";
+
+import { COLORS } from "../../styles/colors";
 
 export default function VotingRoom() {
   const { query } = useRouter();
@@ -36,20 +38,44 @@ export default function VotingRoom() {
     <Container>
       <Description>Results page</Description>
 
+      <Top>
+        <IconCircle icon={"/imgs/package.png"} size='large' />
+        <div>
+          <div className='inline'>
+            <h3>{description}</h3>
+            <Delivered status={delivered} />
+          </div>
+          <div>For</div>
+          <div>Unit</div>
+        </div>
+      </Top>
+
       <Results className='box title-light ' key={`packages-${id}`}>
         <div>{description}</div>
         <div>403</div>
-        {delivered ? (
-          <AiFillCheckCircle color='green' />
-        ) : (
-          <AiFillClockCircle color='grey' />
-        )}
+        <Delivered status={delivered} />
       </Results>
     </Container>
   );
 }
 
 const Results = styled.div``;
+
+const Top = styled.div`
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  .inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  h3 {
+    max-width: 50%;
+  }
+`;
 
 const Container = styled.div`
   height: 100vh;

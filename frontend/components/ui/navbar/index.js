@@ -19,7 +19,7 @@ const Navbar = () => {
     <>
       <Nav className='navbar'>
         <Link href='/'>
-          <img src='imgs/logo.png' />
+          <img src='/imgs/logo.png' />
         </Link>
       </Nav>
     </>

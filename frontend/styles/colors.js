@@ -12,4 +12,5 @@ export const COLORS = {
   },
   MAIN: "#eb5e28",
   MAINDARKGREY: "#293241",
+  ACCENT: "#B8A376",
 };

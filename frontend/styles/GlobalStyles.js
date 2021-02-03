@@ -14,6 +14,14 @@ const GlobalStyles = createGlobalStyle`
 	  text-decoration: none;
 	}
 
+	h3 {
+		/* Subheader - Heavy */
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 46px;
+		/* identical to box height, or 144% */
+	}
+
 	button {
 		font-family: "Source Sans Pro", sans-serif;
 		font-size: 1.2rem;
@@ -40,11 +48,15 @@ const GlobalStyles = createGlobalStyle`
     :active {
       box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.12);
 		}
-
-
 	}
 
-	section{
+	p {
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 20px;
+	}
+
+	section {
 		max-width: 1000px;
 		margin: auto;
 		padding: 0 1rem;
