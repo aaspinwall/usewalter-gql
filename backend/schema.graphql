@@ -6,6 +6,41 @@ input BoolFieldUpdateOperationsInput {
   set: Boolean
 }
 
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
 type Mutation {
   createDraft(authorEmail: String!, content: String, title: String!): Post
   createOnePackage(data: PackageCreateInput!): Package!
@@ -17,6 +52,69 @@ type Mutation {
   updateOnePackage(data: PackageUpdateInput!, where: PackageWhereUniqueInput!): Package
 }
 
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NullableBoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
 type Package {
   delivered: Boolean!
   description: String!
@@ -26,15 +124,34 @@ type Package {
 input PackageCreateInput {
   delivered: Boolean
   description: String!
+  resident: ResidentCreateNestedOneWithoutPackageInput!
+}
+
+input PackageCreateNestedManyWithoutResidentInput {
+  connect: [PackageWhereUniqueInput!]
+  connectOrCreate: [PackageCreateOrConnectWithoutresidentInput!]
+  create: [PackageCreateWithoutResidentInput!]
+}
+
+input PackageCreateOrConnectWithoutresidentInput {
+  create: PackageCreateWithoutResidentInput!
+  where: PackageWhereUniqueInput!
+}
+
+input PackageCreateWithoutResidentInput {
+  delivered: Boolean
+  description: String!
 }
 
 input PackageUpdateInput {
   delivered: BoolFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
+  resident: ResidentUpdateOneRequiredWithoutPackageInput
 }
 
 input PackageWhereUniqueInput {
   id: Int
+  unit: Int
 }
 
 type Post {
@@ -63,6 +180,58 @@ input PostCreateWithoutAuthorInput {
   title: String!
 }
 
+input PostScalarWhereInput {
+  AND: [PostScalarWhereInput!]
+  NOT: [PostScalarWhereInput!]
+  OR: [PostScalarWhereInput!]
+  authorId: IntNullableFilter
+  content: StringNullableFilter
+  id: IntFilter
+  published: BoolFilter
+  title: StringFilter
+}
+
+input PostUpdateManyMutationInput {
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpdateManyWithWhereWithoutAuthorInput {
+  data: PostUpdateManyMutationInput!
+  where: PostScalarWhereInput!
+}
+
+input PostUpdateManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput!]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput!]
+  create: [PostCreateWithoutAuthorInput!]
+  delete: [PostWhereUniqueInput!]
+  deleteMany: [PostScalarWhereInput!]
+  disconnect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
+  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  data: PostUpdateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostUpdateWithoutAuthorInput {
+  content: NullableStringFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  create: PostCreateWithoutAuthorInput!
+  update: PostUpdateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
 input PostWhereUniqueInput {
   id: Int
 }
@@ -88,6 +257,25 @@ input ProfileCreateWithoutUserInput {
   bio: String
 }
 
+input ProfileUpdateOneWithoutUserInput {
+  connect: ProfileWhereUniqueInput
+  connectOrCreate: ProfileCreateOrConnectWithoutuserInput
+  create: ProfileCreateWithoutUserInput
+  delete: Boolean
+  disconnect: Boolean
+  update: ProfileUpdateWithoutUserInput
+  upsert: ProfileUpsertWithoutUserInput
+}
+
+input ProfileUpdateWithoutUserInput {
+  bio: NullableStringFieldUpdateOperationsInput
+}
+
+input ProfileUpsertWithoutUserInput {
+  create: ProfileCreateWithoutUserInput!
+  update: ProfileUpdateWithoutUserInput!
+}
+
 input ProfileWhereUniqueInput {
   id: Int
   userID: Int
@@ -104,6 +292,11 @@ type Query {
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
 }
 
+enum QueryMode {
+  default
+  insensitive
+}
+
 type Resident {
   email: String!
   name: String!
@@ -114,11 +307,18 @@ type Resident {
 }
 
 input ResidentCreateInput {
+  Package: PackageCreateNestedManyWithoutResidentInput
   name: String!
   telephone: String
   timeForNotif: String
   unit: Int!
   user: UserCreateNestedOneWithoutResidentInput!
+}
+
+input ResidentCreateNestedOneWithoutPackageInput {
+  connect: ResidentWhereUniqueInput
+  connectOrCreate: ResidentCreateOrConnectWithoutPackageInput
+  create: ResidentCreateWithoutPackageInput
 }
 
 input ResidentCreateNestedOneWithoutUserInput {
@@ -127,16 +327,51 @@ input ResidentCreateNestedOneWithoutUserInput {
   create: ResidentCreateWithoutUserInput
 }
 
+input ResidentCreateOrConnectWithoutPackageInput {
+  create: ResidentCreateWithoutPackageInput!
+  where: ResidentWhereUniqueInput!
+}
+
 input ResidentCreateOrConnectWithoutuserInput {
   create: ResidentCreateWithoutUserInput!
   where: ResidentWhereUniqueInput!
 }
 
-input ResidentCreateWithoutUserInput {
+input ResidentCreateWithoutPackageInput {
   name: String!
   telephone: String
   timeForNotif: String
   unit: Int!
+  user: UserCreateNestedOneWithoutResidentInput!
+}
+
+input ResidentCreateWithoutUserInput {
+  Package: PackageCreateNestedManyWithoutResidentInput
+  name: String!
+  telephone: String
+  timeForNotif: String
+  unit: Int!
+}
+
+input ResidentUpdateOneRequiredWithoutPackageInput {
+  connect: ResidentWhereUniqueInput
+  connectOrCreate: ResidentCreateOrConnectWithoutPackageInput
+  create: ResidentCreateWithoutPackageInput
+  update: ResidentUpdateWithoutPackageInput
+  upsert: ResidentUpsertWithoutPackageInput
+}
+
+input ResidentUpdateWithoutPackageInput {
+  name: StringFieldUpdateOperationsInput
+  telephone: NullableStringFieldUpdateOperationsInput
+  timeForNotif: NullableStringFieldUpdateOperationsInput
+  unit: IntFieldUpdateOperationsInput
+  user: UserUpdateOneRequiredWithoutResidentInput
+}
+
+input ResidentUpsertWithoutPackageInput {
+  create: ResidentCreateWithoutPackageInput!
+  update: ResidentUpdateWithoutPackageInput!
 }
 
 input ResidentWhereUniqueInput {
@@ -146,6 +381,36 @@ input ResidentWhereUniqueInput {
 
 input StringFieldUpdateOperationsInput {
   set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
 }
 
 type User {
@@ -183,6 +448,27 @@ input UserCreateWithoutResidentInput {
   posts: PostCreateNestedManyWithoutAuthorInput
   profile: ProfileCreateNestedOneWithoutUserInput
   super: Boolean
+}
+
+input UserUpdateOneRequiredWithoutResidentInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutresidentInput
+  create: UserCreateWithoutResidentInput
+  update: UserUpdateWithoutResidentInput
+  upsert: UserUpsertWithoutResidentInput
+}
+
+input UserUpdateWithoutResidentInput {
+  email: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  posts: PostUpdateManyWithoutAuthorInput
+  profile: ProfileUpdateOneWithoutUserInput
+  super: NullableBoolFieldUpdateOperationsInput
+}
+
+input UserUpsertWithoutResidentInput {
+  create: UserCreateWithoutResidentInput!
+  update: UserUpdateWithoutResidentInput!
 }
 
 input UserWhereUniqueInput {
