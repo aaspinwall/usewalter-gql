@@ -4,16 +4,17 @@ import IconCircle from "../../components/ui/icon";
 import Link from "next/link";
 import styled from "styled-components";
 import Card from "../../components/ui/card";
-import { GET_PACKAGE_BY_ID } from "../../components/polloTest/GetPackages";
+import {
+  GET_PACKAGE_BY_ID,
+  SET_PACKAGE_TO_DELIVERED,
+} from "../../components/polloTest/GetPackages";
 import Loading from "../../components/ui/Loading";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import Head from "next/head";
-
-import { COLORS } from "../../styles/colors";
 
 export default function VotingRoom() {
   const { query } = useRouter();
+  const [setToDelivered] = useMutation(SET_PACKAGE_TO_DELIVERED);
   // timerProps are passed to the Timer component to style the countdown animation
   const [pakData, setPakData] = useState(null);
   const [pakResults, { loading, data }] = useLazyQuery(GET_PACKAGE_BY_ID, {
@@ -31,6 +32,22 @@ export default function VotingRoom() {
   }
 
   const { id, delivered, description, unit } = pakData;
+
+  const handleDelivered = async () => {
+    try {
+      const success = await setToDelivered({
+        variables: {
+          id: id,
+        },
+      });
+      console.table(success.data);
+
+      // redirect to security
+    } catch (error) {
+      console.log(error);
+      // error
+    }
+  };
 
   return (
     <Container>
@@ -51,6 +68,7 @@ export default function VotingRoom() {
         <div>{description}</div>
         <div>403</div>
         <Delivered status={delivered} />
+        <button onClick={handleDelivered}>Delivered</button>
       </Results>
     </Container>
   );
@@ -81,32 +99,7 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Header = styled.h1`
-  color: white;
-  text-align: center;
-  margin-top: 0;
-  padding-top: 15px;
-  font-size: 3rem;
-`;
-
 const Description = styled.p`
   color: white;
   margin-left: 1rem;
-`;
-
-const LinkHome = styled.a`
-  margin-top: 15px;
-  padding: 8px;
-  border-radius: 5px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  border: 3px solid #293241;
-  cursor: pointer;
-
-  &:active {
-    background: #e5e5e5;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-    outline: none;
-    transform: scale(0.9);
-  }
 `;

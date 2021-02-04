@@ -36,11 +36,6 @@ const GetData = () => {
               <div>{description}</div>
               <div>{unit}</div>
               <Delivered delivered={delivered} />
-              {/*               {delivered ? (
-                <AiFillCheckCircle color='green' />
-              ) : (
-                <AiFillClockCircle color='grey' />
-              )} */}
             </Results>
           </Link>
         );

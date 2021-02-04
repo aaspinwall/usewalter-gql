@@ -11,9 +11,9 @@ export default function LandingPage() {
       </Head>
       <h1>Welcome</h1>
       <div className='card'>
-        <Link href='/user'>
+        <Link href='/residents'>
           <button>
-            <a>User</a>
+            <a>Resident</a>
           </button>
         </Link>
         <Link href='/security'>

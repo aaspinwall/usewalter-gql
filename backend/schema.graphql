@@ -285,6 +285,7 @@ input ProfileWhereUniqueInput {
 type Query {
   feed: [Post]
   filterPosts(searchString: String): [Post]
+  getResidentByUserID(id: Int): User
   notDelivered: [Package]
   package(where: PackageWhereUniqueInput!): Package
   packages(after: PackageWhereUniqueInput, before: PackageWhereUniqueInput, first: Int, last: Int): [Package!]!

@@ -74,6 +74,18 @@ const Query = objectType({
     t.crud.users()
     t.crud.residents()
 
+    t.field('getResidentByUserID', {
+      type: 'User',
+      args: {
+        id: intArg(),
+      },
+      resolve: (_, { id }, ctx) => {
+        return ctx.prisma.user.findUnique({
+          where: { id: Number(id) },
+        })
+      },
+    })
+
     t.list.field('notDelivered', {
       type: 'Package',
       resolve: (_, args, ctx) => {
@@ -119,12 +131,6 @@ const Mutation = objectType({
     t.crud.deleteOneUser({ alias: 'deleteUser' })
 
     t.crud.createOneResident()
-
-    // create resident START
-
-    t.crud.createOneResident()
-
-    // create resident END
 
     t.crud.deleteOnePost()
 
@@ -172,7 +178,7 @@ const Mutation = objectType({
       },
       resolve: (_, { id }, ctx) => {
         return ctx.prisma.package.update({
-          where: { id: id },
+          where: { id: Number(id) },
           data: { delivered: true },
         })
       },

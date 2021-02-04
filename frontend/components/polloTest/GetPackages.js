@@ -22,6 +22,17 @@ export const GET_PACKAGE_BY_ID = gql`
   }
 `;
 
+export const SET_PACKAGE_TO_DELIVERED = gql`
+  mutation setToDelivered($id: Int!) {
+    setDelivered(id: $id) {
+      id
+      delivered
+      description
+      unit
+    }
+  }
+`;
+
 export const ADD_VOTER_DATA = gql`
   mutation addVoterData($id: String!, $name: String!, $option: String!) {
     addVoterData(voterData: { name: $name, option: $option }, roomID: $id) {

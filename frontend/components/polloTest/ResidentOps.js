@@ -53,22 +53,22 @@ export const CREATE_RESIDENT = gql`
   }
 `;
 
-export const GET_RESULTS = gql`
-  query roomResults($id: String!) {
-    roomByID(id: $id) {
-      roomData {
-        id
+export const GET_RESIDENT_BY_ID = gql`
+  query getResident($id: Int!) {
+    getResidentByUserID(id: $id) {
+      email
+      super
+      resident {
+        unit
         name
-        timeLimit
-        voteOptions
-        voters {
-          name
-          voteData
+        telephone
+        timeForNotif
+        package {
+          id
+          delivered
+          description
         }
       }
-      code
-      success
-      message
     }
   }
 `;
