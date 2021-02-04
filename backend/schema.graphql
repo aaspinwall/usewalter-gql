@@ -9,8 +9,9 @@ input BoolFieldUpdateOperationsInput {
 type Mutation {
   createDraft(authorEmail: String!, content: String, title: String!): Post
   createOnePackage(data: PackageCreateInput!): Package!
-  createResident(email: String!, password: String!): Resident
+  createOneResident(data: ResidentCreateInput!): Resident!
   deleteOnePost(where: PostWhereUniqueInput!): Post
+  deleteUser(where: UserWhereUniqueInput!): User
   publish(id: Int): Post
   signupUser(data: UserCreateInput!): User!
   updateOnePackage(data: PackageUpdateInput!, where: PackageWhereUniqueInput!): Package
@@ -105,11 +106,42 @@ type Query {
 
 type Resident {
   email: String!
-  password: String!
+  name: String!
+  telephone: String
+  timeForNotif: String
+  unit: Int!
+  user: User!
+}
+
+input ResidentCreateInput {
+  name: String!
+  telephone: String
+  timeForNotif: String
+  unit: Int!
+  user: UserCreateNestedOneWithoutResidentInput!
+}
+
+input ResidentCreateNestedOneWithoutUserInput {
+  connect: ResidentWhereUniqueInput
+  connectOrCreate: ResidentCreateOrConnectWithoutuserInput
+  create: ResidentCreateWithoutUserInput
+}
+
+input ResidentCreateOrConnectWithoutuserInput {
+  create: ResidentCreateWithoutUserInput!
+  where: ResidentWhereUniqueInput!
+}
+
+input ResidentCreateWithoutUserInput {
+  name: String!
+  telephone: String
+  timeForNotif: String
+  unit: Int!
 }
 
 input ResidentWhereUniqueInput {
   email: String
+  unit: Int
 }
 
 input StringFieldUpdateOperationsInput {
@@ -119,16 +151,38 @@ input StringFieldUpdateOperationsInput {
 type User {
   email: String!
   id: Int!
-  name: String
   posts: [Post!]!
   profile: Profile
+  resident: Resident
+  super: Boolean
 }
 
 input UserCreateInput {
   email: String!
-  name: String
+  password: String!
   posts: PostCreateNestedManyWithoutAuthorInput
   profile: ProfileCreateNestedOneWithoutUserInput
+  resident: ResidentCreateNestedOneWithoutUserInput
+  super: Boolean
+}
+
+input UserCreateNestedOneWithoutResidentInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutresidentInput
+  create: UserCreateWithoutResidentInput
+}
+
+input UserCreateOrConnectWithoutresidentInput {
+  create: UserCreateWithoutResidentInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateWithoutResidentInput {
+  email: String!
+  password: String!
+  posts: PostCreateNestedManyWithoutAuthorInput
+  profile: ProfileCreateNestedOneWithoutUserInput
+  super: Boolean
 }
 
 input UserWhereUniqueInput {

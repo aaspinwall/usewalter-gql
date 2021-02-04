@@ -12,10 +12,11 @@ const User = objectType({
   name: 'User',
   definition(t) {
     t.model.id()
-    t.model.name()
     t.model.email()
+    t.model.super()
     t.model.posts({ pagination: false })
     t.model.profile()
+    t.model.resident()
   },
 })
 
@@ -23,7 +24,11 @@ const Resident = objectType({
   name: 'Resident',
   definition(t) {
     t.model.email()
-    t.model.password()
+    t.model.unit()
+    t.model.name()
+    t.model.telephone()
+    t.model.timeForNotif()
+    t.model.user()
   },
 })
 
@@ -109,24 +114,13 @@ const Mutation = objectType({
   definition(t) {
     t.crud.createOneUser({ alias: 'signupUser' })
 
+    t.crud.deleteOneUser({ alias: 'deleteUser' })
+
+    t.crud.createOneResident()
+
     // create resident START
 
-    t.field('createResident', {
-      type: 'Resident',
-      args: {
-        email: nonNull(stringArg()),
-        password: nonNull(stringArg()),
-      },
-
-      resolve: (_, { email, password }, ctx) => {
-        return ctx.prisma.resident.create({
-          data: {
-            email,
-            password: 'a secret password was created',
-          },
-        })
-      },
-    })
+    t.crud.createOneResident()
 
     // create resident END
 

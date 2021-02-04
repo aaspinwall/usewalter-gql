@@ -10,14 +10,20 @@ generator client {
 model User {
   id    Int     @default(autoincrement()) @id
   email String  @unique
-  name  String?
+  password String
+  super Boolean? @default(false)
   posts Post[]
   profile Profile?
+  resident Resident?
 }
 
 model Resident {
   email String @unique
-  password String
+  unit Int @unique
+  name String
+  telephone String?
+  timeForNotif String?
+  user User @relation(fields: [email], references: [email])
 }
 
 model Faker {
@@ -47,4 +53,5 @@ model Package {
   id        Int     @default(autoincrement()) @id
   delivered Boolean @default(false)
   description String 
+  
 }
