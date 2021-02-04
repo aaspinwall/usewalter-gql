@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Loading from "../../components/ui/Loading";
 import { Delivered } from "../../components/ui/widgets";
+import { Results } from "../../components/ui/results";
 import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
 
 import { GET_ALL_PACKAGES } from "../../components/polloTest/GetPackages";
@@ -43,17 +44,5 @@ const GetData = () => {
     </div>
   );
 };
-
-const Results = styled.div`
-  display: grid;
-  grid-template-columns: 60% 1fr 60px;
-  @media only screen and (min-width: 62em) {
-    grid-template-columns: 50% 1fr 60px;
-  }
-  > * {
-    width: 100%;
-    align-self: center;
-  }
-`;
 
 export default GetData;

@@ -8,12 +8,14 @@ export const CREATE_RESIDENT_ACCOUNT = gql`
     $timeForNotif: String
     $email: String!
     $password: String!
-    $super: Boolean
+    $superuser: Boolean
   ) {
-    signupUser(data: { email: $email, password: $password, super: $super }) {
+    signupUser(
+      data: { email: $email, password: $password, superuser: $superuser }
+    ) {
       id
       email
-      super
+      superuser
     }
     createOneResident(
       data: {
@@ -57,7 +59,7 @@ export const GET_RESIDENT_BY_ID = gql`
   query getResident($id: Int!) {
     getResidentByUserID(id: $id) {
       email
-      super
+      superuser
       resident {
         unit
         name

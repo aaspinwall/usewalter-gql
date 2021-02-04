@@ -7,8 +7,8 @@ const Modal = ({ children, open }) => {
     <>
       {open && (
         <ClientOnlyPortal>
-          <div className="backdrop">
-            <div className="modal">{children}</div>
+          <div className='backdrop'>
+            <div className='modal'>{children}</div>
             <style jsx>{`
               :global(body) {
                 overflow: hidden;
@@ -22,8 +22,7 @@ const Modal = ({ children, open }) => {
                 left: 0;
               }
               .modal {
-                background-color: ${COLORS.PURPLES.LIGHT};
-                color: ${COLORS.SHADES.OFFWHITE};
+                background-color: white;
                 position: absolute;
                 top: 20%;
                 right: 10%;
@@ -31,6 +30,10 @@ const Modal = ({ children, open }) => {
                 left: 10%;
                 padding: 1em;
                 border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-flow: column;
               }
               & button {
                 position: relative;

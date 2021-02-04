@@ -13,7 +13,7 @@ const User = objectType({
   definition(t) {
     t.model.id()
     t.model.email()
-    t.model.super()
+    t.model.superuser()
     t.model.posts({ pagination: false })
     t.model.profile()
     t.model.resident()
@@ -83,6 +83,13 @@ const Query = objectType({
         return ctx.prisma.user.findUnique({
           where: { id: Number(id) },
         })
+      },
+    })
+
+    t.list.field('getResidentDirectory', {
+      type: 'Resident',
+      resolve: (_, args, ctx) => {
+        return ctx.prisma.resident.findMany({ take: 100 })
       },
     })
 

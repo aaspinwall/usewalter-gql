@@ -10,8 +10,9 @@ const GlobalStyles = createGlobalStyle`
 	}
 	
 	a {
-	  color: inherit;
+	  color: ${COLORS.ACCENT};
 	  text-decoration: none;
+		font-weight: bold;
 	}
 
 	h1{
@@ -23,6 +24,40 @@ const GlobalStyles = createGlobalStyle`
 		font-weight: 600;
 		font-size: 32px;
 		line-height: 46px;
+	}
+
+	label{
+		font-weight: bold;
+		font-size: 1.2rem;
+	}
+
+	input{
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 1.2rem;
+		line-height: 1.6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		font-weight: bold;
+		color: black;
+		width: 100%;
+		padding: 1rem;
+		margin: 1rem 0;
+		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+		border-radius: 23px;
+		border: none;
+    transition: 0.4s ease-in-out box-shadow;
+    margin: 1.5rem 0;
+    :hover,
+    :focus {
+			box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+			cursor: pointer;
+    }
+    :active {
+      box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.12);
+		}
+
 	}
 
 	button {
@@ -52,17 +87,27 @@ const GlobalStyles = createGlobalStyle`
     :active {
       box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.12);
 		}
+		:disabled{
+			filter: brightness(0.76)
+		}
+		a{
+			color: white;
+		}
 	}
 
 	p {
-		font-weight: bold;
 		font-size: 14px;
 		line-height: 20px;
 	}
 
+	.instructions{
+		max-width: 50%;
+    margin: auto;
+	}
+
 	section {
 		max-width: 1000px;
-		margin: auto;
+		margin: 2rem auto;
 		padding: 0 1rem;
 	}
 

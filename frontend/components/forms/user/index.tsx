@@ -3,31 +3,33 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 
 const content = {
   placeholders: {
-    description: "Ex: Amazon box*",
-    unit: "Ex: 403*",
+    email: "email*",
+    password: "password*",
   },
   initialValues: {
-    description: "",
-    unit: "",
+    email: "",
+    password: "",
   },
 };
 
 interface Errors {
-  description?: string;
-  unit?: string;
+  email?: string;
+  password?: string;
 }
 
 const validate = async (values) => {
   const errors: Errors = {};
-  if (!values.description) errors.description = "This field is required";
-  if (!values.unit) errors.unit = "This field is required";
-  if (typeof values.unit !== "number")
-    errors.unit = "This field must be a valid unit number";
+  if (!values.email) {
+    errors.email = "This field is required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+  if (!values.password) errors.password = "This field is required";
 
   return errors;
 };
 
-const Contact = ({ callback }) => {
+const UserForm = ({ callback }) => {
   React.useEffect(() => {
     const inputs = document.getElementsByTagName("input");
     Object.values(inputs).forEach((v) => {
@@ -54,30 +56,32 @@ const Contact = ({ callback }) => {
           <Form>
             <div id='top-form'>
               <div>
-                <label htmlFor='description'>Package description</label>
+                <label htmlFor='email'>Email</label>
                 <Field
                   type='text'
-                  name='description'
-                  placeholder={content.placeholders.description}
+                  name='email'
+                  placeholder={content.placeholders.email}
                 ></Field>
-                <ErrorMessage name='description' component={errorMessage} />
+                <ErrorMessage name='email' component={errorMessage} />
               </div>
 
               <div>
-                <label htmlFor='unit'>Unit number</label>
+                <label htmlFor='password'>Password </label>
                 <Field
-                  type='number'
-                  name='unit'
-                  placeholder={content.placeholders.unit}
+                  type='password'
+                  name='password'
+                  placeholder={content.placeholders.password}
                 />
-                <ErrorMessage name='unit' component={errorMessage} />
+                <ErrorMessage name='password' component={errorMessage} />
               </div>
             </div>
 
             <button disabled={!isValid}>submit</button>
 
             <div>{isValidating ? "...Validating" : null}</div>
-            <div>{isSubmitting ? "...Please wait" : null}</div>
+            <div>
+              {isSubmitting ? "We're working on your request..." : null}
+            </div>
           </Form>
         )}
       </Formik>
@@ -85,4 +89,4 @@ const Contact = ({ callback }) => {
   );
 };
 
-export default Contact;
+export default UserForm;

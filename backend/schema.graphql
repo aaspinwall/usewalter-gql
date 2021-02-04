@@ -286,6 +286,7 @@ type Query {
   feed: [Post]
   filterPosts(searchString: String): [Post]
   getResidentByUserID(id: Int): User
+  getResidentDirectory: [Resident]
   notDelivered: [Package]
   package(where: PackageWhereUniqueInput!): Package
   packages(after: PackageWhereUniqueInput, before: PackageWhereUniqueInput, first: Int, last: Int): [Package!]!
@@ -422,7 +423,7 @@ type User {
   posts: [Post!]!
   profile: Profile
   resident: Resident
-  super: Boolean
+  superuser: Boolean
 }
 
 input UserCreateInput {
@@ -431,7 +432,7 @@ input UserCreateInput {
   posts: PostCreateNestedManyWithoutAuthorInput
   profile: ProfileCreateNestedOneWithoutUserInput
   resident: ResidentCreateNestedOneWithoutUserInput
-  super: Boolean
+  superuser: Boolean
 }
 
 input UserCreateNestedOneWithoutResidentInput {
@@ -450,7 +451,7 @@ input UserCreateWithoutResidentInput {
   password: String!
   posts: PostCreateNestedManyWithoutAuthorInput
   profile: ProfileCreateNestedOneWithoutUserInput
-  super: Boolean
+  superuser: Boolean
 }
 
 input UserUpdateOneRequiredWithoutResidentInput {
@@ -466,7 +467,7 @@ input UserUpdateWithoutResidentInput {
   password: StringFieldUpdateOperationsInput
   posts: PostUpdateManyWithoutAuthorInput
   profile: ProfileUpdateOneWithoutUserInput
-  super: NullableBoolFieldUpdateOperationsInput
+  superuser: NullableBoolFieldUpdateOperationsInput
 }
 
 input UserUpsertWithoutResidentInput {

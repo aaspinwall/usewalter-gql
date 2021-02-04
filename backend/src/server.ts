@@ -28,7 +28,7 @@ import { makeUser } from './prismaraw'
     if (admin) {
       makeUser(true).then((user) => res.send(user))
     }
-    makeUser()
+    makeUser().then((user) => res.send(user))
   })
 
   app.listen(4000, () => {

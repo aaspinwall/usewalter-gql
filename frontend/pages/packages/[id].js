@@ -4,6 +4,7 @@ import IconCircle from "../../components/ui/icon";
 import Link from "next/link";
 import styled from "styled-components";
 import Card from "../../components/ui/card";
+import { Results } from "../../components/ui/results";
 import {
   GET_PACKAGE_BY_ID,
   SET_PACKAGE_TO_DELIVERED,
@@ -11,12 +12,14 @@ import {
 import Loading from "../../components/ui/Loading";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import Modal from "../../components/ui/modal";
 
 export default function VotingRoom() {
   const { query } = useRouter();
   const [setToDelivered] = useMutation(SET_PACKAGE_TO_DELIVERED);
   // timerProps are passed to the Timer component to style the countdown animation
   const [pakData, setPakData] = useState(null);
+  const [showModal, setModal] = useState(false);
   const [pakResults, { loading, data }] = useLazyQuery(GET_PACKAGE_BY_ID, {
     onCompleted: (data) => {
       setPakData(data.package);
@@ -41,8 +44,8 @@ export default function VotingRoom() {
         },
       });
       console.table(success.data);
-
-      // redirect to security
+      // redirect to security screen
+      setModal(true);
     } catch (error) {
       console.log(error);
       // error
@@ -53,28 +56,36 @@ export default function VotingRoom() {
     <Container>
       <Description>Results page</Description>
 
+      <Modal open={showModal} className='fill'>
+        <h2>Thanks!</h2>
+        <p>Keep doing a great job!</p>
+        <button onClick={() => setModal(!showModal)}>Close</button>
+      </Modal>
+
       <Top>
         <IconCircle icon={"/imgs/package.png"} size='large' />
         <div>
-          <div className='inline'>
+          <div className=''>
             <h3>{description}</h3>
-            <Delivered status={delivered} />
           </div>
           <div>For: Unit# {unit}</div>
         </div>
       </Top>
 
-      <Results className='box title-light ' key={`packages-${id}`}>
-        <div>{description}</div>
-        <div>403</div>
-        <Delivered status={delivered} />
-        <button onClick={handleDelivered}>Delivered</button>
-      </Results>
+      <div>
+        <Results className='box title-light ' key={`packages-${id}`}>
+          <div>{description}</div>
+          <div>{unit}</div>
+          <div>{delivered ? "true" : "false"}</div>
+          <Delivered status={delivered} />
+        </Results>
+        <button onClick={handleDelivered}>Mark as delivered</button>
+      </div>
     </Container>
   );
 }
 
-const Results = styled.div``;
+//const Results = styled.div``;
 
 const Top = styled.div`
   /* display: grid;

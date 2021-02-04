@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import { COLORS } from "../styles/colors";
+import IconCircle from "../components/ui/icon";
 
 export default function LandingPage() {
   return (
@@ -9,8 +10,22 @@ export default function LandingPage() {
       <Head>
         <title>useWalter || Package Delivery System</title>
       </Head>
-      <h1>Welcome</h1>
-      <div className='card'>
+      <section className='two'>
+        <img src='/imgs/package.png' />
+        <div>
+          <h1>Welcome</h1>
+          <p>
+            Click on the resident button to log into your account. You'll be
+            able to see your packages and change your profile and notification
+            settings.
+          </p>
+          <p>
+            Security personnel is able to register new packages and update their
+            status.
+          </p>
+        </div>
+      </section>
+      <div>
         <Link href='/residents'>
           <button>
             <a>Resident</a>
@@ -32,37 +47,16 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  /*  a {
-    font-size: 1.5rem;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    width: 150px;
-    height: 55px;
-    padding: 8px;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    border: 3px solid ${COLORS.SHADES.DARKGREY};
-    background: ${COLORS.GREY};
-
-    cursor: pointer;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: #0070f3;
-      border-color: #0070f3;
-    }
-
-    &:active {
-      box-shadow: inset 0px 0px 5px ${COLORS.SHADES.DARKGREY};
-      outline: none;
-      transform: scale(0.9);
-    }
-  } */
+  img {
+    align-self: center;
+  }
+  .two {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    max-width: 500px;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
 
   .card {
     background: ${COLORS.SHADES.OFFWHITE};

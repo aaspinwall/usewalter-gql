@@ -13,7 +13,10 @@ const Security = () => {
     <Wrapper>
       <header>Security Panel</header>
       <section>
-        <p>Add instructions</p>
+        <p className='instructions'>
+          To update the status of a package, click on it. If you're receiving a
+          new package, select new delivery.
+        </p>
         <div className='full'>
           <button onClick={() => setSeeAll(!seeAll)}>
             {!seeAll ? "Show" : "Hide"} all packages
