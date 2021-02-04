@@ -26,13 +26,6 @@ model Resident {
   user User @relation(fields: [email], references: [email])
 }
 
-model Faker {
-  id Int @default(autoincrement()) @id
-  email String 
-  password String
-}
-
-
 model Profile {
   id Int @default(autoincrement()) @id
   bio String?
@@ -52,6 +45,7 @@ model Post {
 model Package {
   id        Int     @default(autoincrement()) @id
   delivered Boolean @default(false)
-  description String 
-  
+  description String
+  unit Int  @unique
+  resident Resident @relation(fields: [unit], references:[unit])
 }
