@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import GetData from "../../utilities/getData";
+import Link from "next/link";
+import AllPackages from "../../utilities/getData";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -17,9 +18,13 @@ const Security = () => {
           <button onClick={() => setSeeAll(!seeAll)}>
             {!seeAll ? "Show" : "Hide"} all packages
           </button>
-          <button>New delivery</button>
+          <Link href='/packages/new'>
+            <button>
+              <a>New delivery</a>
+            </button>
+          </Link>
         </div>
-        {seeAll ? <GetData /> : null}
+        {seeAll ? <AllPackages /> : null}
       </section>
     </Wrapper>
   );

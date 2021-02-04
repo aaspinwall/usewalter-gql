@@ -6,6 +6,7 @@ export const GET_ALL_PACKAGES = gql`
       id
       delivered
       description
+      unit
     }
   }
 `;
@@ -16,6 +17,7 @@ export const GET_PACKAGE_BY_ID = gql`
       id
       delivered
       description
+      unit
     }
   }
 `;

@@ -29,6 +29,7 @@ const Resident = objectType({
     t.model.telephone()
     t.model.timeForNotif()
     t.model.user()
+    t.model.package()
   },
 })
 
@@ -38,6 +39,7 @@ const Package = objectType({
     t.model.id()
     t.model.delivered()
     t.model.description()
+    t.model.unit()
   },
 })
 
@@ -159,6 +161,19 @@ const Mutation = objectType({
         return ctx.prisma.post.update({
           where: { id: Number(id) },
           data: { published: true },
+        })
+      },
+    })
+
+    t.nullable.field('setDelivered', {
+      type: 'Package',
+      args: {
+        id: intArg(),
+      },
+      resolve: (_, { id }, ctx) => {
+        return ctx.prisma.package.update({
+          where: { id: id },
+          data: { delivered: true },
         })
       },
     })

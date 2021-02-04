@@ -48,6 +48,7 @@ type Mutation {
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
   publish(id: Int): Post
+  setDelivered(id: Int): Package
   signupUser(data: UserCreateInput!): User!
   updateOnePackage(data: PackageUpdateInput!, where: PackageWhereUniqueInput!): Package
 }
@@ -116,9 +117,10 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Package {
-  delivered: Boolean!
+  delivered: Boolean
   description: String!
   id: Int!
+  unit: Int!
 }
 
 input PackageCreateInput {
@@ -144,14 +146,13 @@ input PackageCreateWithoutResidentInput {
 }
 
 input PackageUpdateInput {
-  delivered: BoolFieldUpdateOperationsInput
+  delivered: NullableBoolFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   resident: ResidentUpdateOneRequiredWithoutPackageInput
 }
 
 input PackageWhereUniqueInput {
   id: Int
-  unit: Int
 }
 
 type Post {
@@ -300,6 +301,7 @@ enum QueryMode {
 type Resident {
   email: String!
   name: String!
+  package(after: PackageWhereUniqueInput, before: PackageWhereUniqueInput, first: Int, last: Int): [Package!]!
   telephone: String
   timeForNotif: String
   unit: Int!
@@ -307,8 +309,8 @@ type Resident {
 }
 
 input ResidentCreateInput {
-  Package: PackageCreateNestedManyWithoutResidentInput
   name: String!
+  package: PackageCreateNestedManyWithoutResidentInput
   telephone: String
   timeForNotif: String
   unit: Int!
@@ -317,7 +319,7 @@ input ResidentCreateInput {
 
 input ResidentCreateNestedOneWithoutPackageInput {
   connect: ResidentWhereUniqueInput
-  connectOrCreate: ResidentCreateOrConnectWithoutPackageInput
+  connectOrCreate: ResidentCreateOrConnectWithoutpackageInput
   create: ResidentCreateWithoutPackageInput
 }
 
@@ -327,7 +329,7 @@ input ResidentCreateNestedOneWithoutUserInput {
   create: ResidentCreateWithoutUserInput
 }
 
-input ResidentCreateOrConnectWithoutPackageInput {
+input ResidentCreateOrConnectWithoutpackageInput {
   create: ResidentCreateWithoutPackageInput!
   where: ResidentWhereUniqueInput!
 }
@@ -346,8 +348,8 @@ input ResidentCreateWithoutPackageInput {
 }
 
 input ResidentCreateWithoutUserInput {
-  Package: PackageCreateNestedManyWithoutResidentInput
   name: String!
+  package: PackageCreateNestedManyWithoutResidentInput
   telephone: String
   timeForNotif: String
   unit: Int!
@@ -355,7 +357,7 @@ input ResidentCreateWithoutUserInput {
 
 input ResidentUpdateOneRequiredWithoutPackageInput {
   connect: ResidentWhereUniqueInput
-  connectOrCreate: ResidentCreateOrConnectWithoutPackageInput
+  connectOrCreate: ResidentCreateOrConnectWithoutpackageInput
   create: ResidentCreateWithoutPackageInput
   update: ResidentUpdateWithoutPackageInput
   upsert: ResidentUpsertWithoutPackageInput

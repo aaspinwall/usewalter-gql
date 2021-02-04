@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Loading from "../../components/ui/Loading";
+import { Delivered } from "../../components/ui/widgets";
 import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
 
 import { GET_ALL_PACKAGES } from "../../components/polloTest/GetPackages";
@@ -23,21 +24,23 @@ const GetData = () => {
   if (!packageData) {
     return <Loading />;
   }
-
+  console.log(packageData);
   return (
     <div>
       {packageData.map((pak) => {
-        const { id, description, delivered } = pak;
+        const { id, description, delivered, unit } = pak;
+
         return (
           <Link href={`/packages/${id}`}>
             <Results className='box title-light ' key={`packages-${id}`}>
               <div>{description}</div>
-              <div>403</div>
-              {delivered ? (
+              <div>{unit}</div>
+              <Delivered delivered={delivered} />
+              {/*               {delivered ? (
                 <AiFillCheckCircle color='green' />
               ) : (
                 <AiFillClockCircle color='grey' />
-              )}
+              )} */}
             </Results>
           </Link>
         );

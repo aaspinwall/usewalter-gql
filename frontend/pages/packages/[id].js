@@ -15,24 +15,22 @@ import { COLORS } from "../../styles/colors";
 export default function VotingRoom() {
   const { query } = useRouter();
   // timerProps are passed to the Timer component to style the countdown animation
-  const [roomData, setRoomData] = useState(null);
-  const [roomResults, { loading, data }] = useLazyQuery(GET_PACKAGE_BY_ID, {
+  const [pakData, setPakData] = useState(null);
+  const [pakResults, { loading, data }] = useLazyQuery(GET_PACKAGE_BY_ID, {
     onCompleted: (data) => {
-      setRoomData(data.package);
+      setPakData(data.package);
     },
   });
 
   useEffect(() => {
-    roomResults({ variables: { id: Number(query.id) } });
+    pakResults({ variables: { id: Number(query.id) } });
   }, [query]);
 
-  if (!roomData) {
+  if (!pakData) {
     return <Loading />;
   }
 
-  console.log(roomData);
-
-  const { id, delivered, description } = roomData;
+  const { id, delivered, description, unit } = pakData;
 
   return (
     <Container>
@@ -45,8 +43,7 @@ export default function VotingRoom() {
             <h3>{description}</h3>
             <Delivered status={delivered} />
           </div>
-          <div>For</div>
-          <div>Unit</div>
+          <div>For: Unit# {unit}</div>
         </div>
       </Top>
 

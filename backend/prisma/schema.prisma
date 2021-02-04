@@ -23,6 +23,7 @@ model Resident {
   name String
   telephone String?
   timeForNotif String?
+  package Package[]
   user User @relation(fields: [email], references: [email])
 }
 
@@ -44,8 +45,8 @@ model Post {
 
 model Package {
   id        Int     @default(autoincrement()) @id
-  delivered Boolean @default(false)
+  delivered Boolean? @default(false)
   description String
-  unit Int  @unique
+  unit Int  
   resident Resident @relation(fields: [unit], references:[unit])
 }

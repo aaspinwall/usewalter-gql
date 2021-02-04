@@ -9,22 +9,17 @@ export default function LandingPage() {
       <Head>
         <title>useWalter || Package Delivery System</title>
       </Head>
-      <Header>Welcome</Header>
+      <h1>Welcome</h1>
       <div className='card'>
-        <Link href='/room/create-room'>
-          <a>Create A Room</a>
+        <Link href='/user'>
+          <button>
+            <a>User</a>
+          </button>
         </Link>
-        <Link href='/room/voting-room'>
-          <a>Voting Room</a>
-        </Link>
-        <Link href='/room/results'>
-          <a>Results</a>
-        </Link>
-        <Link href='/info'>
-          <a>About Us</a>
-        </Link>
-        <Link href='/contact'>
-          <a>Contact</a>
+        <Link href='/security'>
+          <button>
+            <a>Security</a>
+          </button>
         </Link>
       </div>
     </Container>
@@ -37,7 +32,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
 
-  a {
+  /*  a {
     font-size: 1.5rem;
     display: flex;
     text-align: center;
@@ -67,7 +62,7 @@ const Container = styled.div`
       outline: none;
       transform: scale(0.9);
     }
-  }
+  } */
 
   .card {
     background: ${COLORS.SHADES.OFFWHITE};

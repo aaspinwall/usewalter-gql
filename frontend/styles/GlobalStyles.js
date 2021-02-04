@@ -14,12 +14,15 @@ const GlobalStyles = createGlobalStyle`
 	  text-decoration: none;
 	}
 
+	h1{
+		font-weight: 900;
+		font-size: 3rem;
+		line-height: 4.5rem;
+	}
 	h3 {
-		/* Subheader - Heavy */
 		font-weight: 600;
 		font-size: 32px;
 		line-height: 46px;
-		/* identical to box height, or 144% */
 	}
 
 	button {
@@ -33,6 +36,7 @@ const GlobalStyles = createGlobalStyle`
 		font-weight: bold;
 		background: #B8A376;
 		color: white;
+		width: 100%;
 		padding: 1rem;
 		margin: 1rem 0;
 		box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
