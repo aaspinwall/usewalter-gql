@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
+import React, { useEffect } from 'react';
+import { AiFillCheckCircle, AiFillClockCircle } from 'react-icons/ai';
 
 export const Delivered = ({ delivered }) => {
   useEffect(() => {
-    console.log("delivered changed to ", delivered);
+    console.log('delivered changed to ', delivered);
   }, [delivered]);
 
   if (!delivered) {

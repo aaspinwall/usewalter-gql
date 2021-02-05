@@ -1,14 +1,14 @@
-import React from "react";
-import { Form, Formik, Field, ErrorMessage } from "formik";
+import React from 'react';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
 
 const content = {
   placeholders: {
-    description: "Ex: Amazon box*",
-    unit: "Ex: 403*",
+    description: 'Ex: Amazon box*',
+    unit: 'Ex: 403*',
   },
   initialValues: {
-    description: "",
-    unit: "",
+    description: '',
+    unit: '',
   },
 };
 
@@ -19,19 +19,18 @@ interface Errors {
 
 const validate = async (values) => {
   const errors: Errors = {};
-  if (!values.description) errors.description = "This field is required";
-  if (!values.unit) errors.unit = "This field is required";
-  if (typeof values.unit !== "number")
-    errors.unit = "This field must be a valid unit number";
+  if (!values.description) errors.description = 'This field is required';
+  if (!values.unit) errors.unit = 'This field is required';
+  if (typeof values.unit !== 'number') errors.unit = 'This field must be a valid unit number';
 
   return errors;
 };
 
 const Contact = ({ callback }) => {
   React.useEffect(() => {
-    const inputs = document.getElementsByTagName("input");
+    const inputs = document.getElementsByTagName('input');
     Object.values(inputs).forEach((v) => {
-      v.autocomplete = "off";
+      v.autocomplete = 'off';
     });
   }, []);
 
@@ -39,45 +38,31 @@ const Contact = ({ callback }) => {
     callback(values);
   };
 
-  const errorMessage = ({ children }) => (
-    <div style={{ color: "red", height: "2rem" }}>{children}</div>
-  );
+  const errorMessage = ({ children }) => <div style={{ color: 'red', height: '2rem' }}>{children}</div>;
 
   return (
     <div>
-      <Formik
-        initialValues={content.initialValues}
-        validate={validate}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={content.initialValues} validate={validate} onSubmit={handleSubmit}>
         {({ isSubmitting, isValid, isValidating }) => (
           <Form>
-            <div id='top-form'>
+            <div id="top-form">
               <div>
-                <label htmlFor='description'>Package description</label>
-                <Field
-                  type='text'
-                  name='description'
-                  placeholder={content.placeholders.description}
-                ></Field>
-                <ErrorMessage name='description' component={errorMessage} />
+                <label htmlFor="description">Package description</label>
+                <Field type="text" name="description" placeholder={content.placeholders.description}></Field>
+                <ErrorMessage name="description" component={errorMessage} />
               </div>
 
               <div>
-                <label htmlFor='unit'>Unit number</label>
-                <Field
-                  type='number'
-                  name='unit'
-                  placeholder={content.placeholders.unit}
-                />
-                <ErrorMessage name='unit' component={errorMessage} />
+                <label htmlFor="unit">Unit number</label>
+                <Field type="number" name="unit" placeholder={content.placeholders.unit} />
+                <ErrorMessage name="unit" component={errorMessage} />
               </div>
             </div>
 
             <button disabled={!isValid}>submit</button>
 
-            <div>{isValidating ? "...Validating" : null}</div>
-            <div>{isSubmitting ? "...Please wait" : null}</div>
+            <div>{isValidating ? '...Validating' : null}</div>
+            <div>{isSubmitting ? '...Please wait' : null}</div>
           </Form>
         )}
       </Formik>

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COLORS } from "../../styles/colors";
+import styled from 'styled-components';
+import { COLORS } from '../../styles/colors';
 
 //These styles are the default nextjs ones, we'll be changing them as we go
 
@@ -87,7 +87,7 @@ const LayoutWrapper = styled.div`
     border-radius: 5px;
     padding: 0.75rem;
     font-size: 1.1rem;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   }
 
   .box {

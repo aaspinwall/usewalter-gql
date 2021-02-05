@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COLORS } from "../../../styles/colors";
+import styled from 'styled-components';
+import { COLORS } from '../../../styles/colors';
 
 export const Circle = styled.div`
   display: flex;

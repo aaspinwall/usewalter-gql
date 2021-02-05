@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import styled from "styled-components";
-import Loading from "../../components/ui/Loading";
-import { Delivered } from "../../components/ui/widgets";
-import { Results } from "../../components/ui/results";
-import { AiFillCheckCircle, AiFillClockCircle } from "react-icons/ai";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import styled from 'styled-components';
+import Loading from '../../components/ui/Loading';
+import { Delivered } from '../../components/ui/widgets';
+import { Results } from '../../components/ui/results';
+import { AiFillCheckCircle, AiFillClockCircle } from 'react-icons/ai';
 
-import { GET_ALL_PACKAGES } from "../../components/polloTest/GetPackages";
-import { useLazyQuery } from "@apollo/client";
+import { GET_ALL_PACKAGES } from '../../components/polloTest/GetPackages';
+import { useLazyQuery } from '@apollo/client';
 
 const GetData = () => {
   const [packageData, setPackageData] = useState(null);
