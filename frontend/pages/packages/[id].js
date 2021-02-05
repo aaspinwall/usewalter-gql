@@ -79,8 +79,7 @@ export default function VotingRoom() {
         <Results className="box title-light " key={`packages-${id}`}>
           <div>{description}</div>
           <div>{unit}</div>
-          <div>{delivered ? 'true' : 'false'}</div>
-          <Delivered status={delivered} />
+          <Delivered delivered={delivered} />
         </Results>
         <button onClick={handleDelivered}>Mark as delivered</button>
       </div>

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import styled from "styled-components";
-import React, { useState } from "react";
-import { COLORS } from "../../../styles/colors";
+import Link from 'next/link';
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import { COLORS } from '../../../styles/colors';
 
 // import MenuIcon from "../../hamburgerMenu/index";
 // HamburgerMenu svg can be used in place of the current → being used
@@ -17,9 +17,9 @@ const Navbar = () => {
 
   return (
     <>
-      <Nav className='navbar'>
-        <Link href='/'>
-          <img src='/imgs/logo.png' />
+      <Nav className="navbar">
+        <Link href="/">
+          <img src="/imgs/logo.png" />
         </Link>
       </Nav>
     </>
