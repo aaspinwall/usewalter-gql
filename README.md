@@ -157,3 +157,8 @@ Please note that you should replace the values on the file `
 ## What's next?
 
 There are many thing I would love to add to the application to make it as powerful as possible. Unfortunately, the time I have is a bit limited. If you're interested, you can see the tasks on the issues panel.
+
+
+## Contributing
+
+If you want to, you can make a pull request. Just make sure you run `yarn lint` before you make your commit. Happy coding!
