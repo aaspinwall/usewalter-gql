@@ -6,19 +6,25 @@
 
 Tech stack:
 
-### Frontend
+### Frontend (JSX and Typescript)
+
 - **Next.js** for routing and server side rendering
 - **React** (hooks) under the hood, Next.js is React.
 - **Styled Components** for styling
 - **Formik** to handle forms and validation
 - **Apollo Client** to query the server
   
-### Backend
+### Backend (Typescript)
 
 - **Apollo Server** manages the server and integrates apollo as a middleware
 - **Express** handles routes for testing
 - **Prisma** SQL ORM running with Postgres
 - **Nexus** generates the GraphQL schema
+
+## CI/CD
+
+- **Eslint + Prettier** to check code formatting and enforce styling rules.
+- **Github actions** running on pull requests. These make sure the code that is being submitted passes the linting rules.
 
 
 **You'll be up and running in no time!** 
@@ -153,6 +159,11 @@ returns all the packages, example:
 
 Please note that you should replace the values on the file `
 /.env`, these should point to your Postgres server
+
+## CI/CD
+
+If you would like to contribute to this project, make sure you run `yarn lint` before committing your code. When you submit your pull request, github will run an action that checks if your code is formatted properly.  
+
 
 ## What's next?
 
