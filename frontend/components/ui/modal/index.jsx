@@ -7,8 +7,8 @@ const Modal = ({ children, open }) => {
     <>
       {open && (
         <ClientOnlyPortal>
-          <div className='backdrop'>
-            <div className='modal'>{children}</div>
+          <div className="backdrop">
+            <div className="modal">{children}</div>
             <style jsx>{`
               :global(body) {
                 overflow: hidden;

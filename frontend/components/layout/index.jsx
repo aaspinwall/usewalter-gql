@@ -13,7 +13,7 @@ const Layout = ({ children, title }) => {
     <LayoutWrapper>
       <Head>
         <title>{title}</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <BodyWrapper>{children}</BodyWrapper>

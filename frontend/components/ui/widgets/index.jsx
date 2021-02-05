@@ -7,8 +7,8 @@ export const Delivered = ({ delivered }) => {
   }, [delivered]);
 
   if (!delivered) {
-    return <AiFillClockCircle color='grey' />;
+    return <AiFillClockCircle color="grey" />;
   } else {
-    return <AiFillCheckCircle color='green' />;
+    return <AiFillCheckCircle color="green" />;
   }
 };

@@ -33,7 +33,7 @@ const GetData = () => {
 
         return (
           <Link href={`/packages/${id}`}>
-            <Results className='box title-light ' key={`packages-${id}`}>
+            <Results className="box title-light " key={`packages-${id}`}>
               <div>{description}</div>
               <div>{unit}</div>
               <Delivered delivered={delivered} />

@@ -13,15 +13,15 @@ const Security = () => {
     <Wrapper>
       <header>Security Panel</header>
       <section>
-        <p className='instructions'>
+        <p className="instructions">
           To update the status of a package, click on it. If you're receiving a
           new package, select new delivery.
         </p>
-        <div className='full'>
+        <div className="full">
           <button onClick={() => setSeeAll(!seeAll)}>
             {!seeAll ? "Show" : "Hide"} all packages
           </button>
-          <Link href='/packages/new'>
+          <Link href="/packages/new">
             <button>
               <a>New delivery</a>
             </button>
