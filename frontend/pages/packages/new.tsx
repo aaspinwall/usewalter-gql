@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import NewPackageForm from "../../components/forms/pack";
-import { CREATE_PACKAGE } from "../../components/polloTest/CreatePackage";
-import { useMutation } from "@apollo/client";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import NewPackageForm from '../../components/forms/pack';
+import { CREATE_PACKAGE } from '../../components/polloTest/CreatePackage';
+import { useMutation } from '@apollo/client';
 
 const Success = ({ pak }) => {
   return (
     <div>
       <h3>Thank you!</h3>
       <p>{`You created a new package called ${pak.description}. The resident at unit ${pak.unit} will be notified soon`}</p>
-      <Link href='/security'>
+      <Link href="/security">
         <a>Return to all packages</a>
       </Link>
     </div>
@@ -39,7 +39,7 @@ const NewPackage = () => {
       // redirect to security
     } catch (error) {
       console.log(error);
-      setError("Invalid unit");
+      setError('Invalid unit');
       // error
     }
   };
@@ -54,11 +54,7 @@ const NewPackage = () => {
   }, [error]);
 
   if (error) {
-    return (
-      <ErrorMessage>
-        Sorry, that is not a valid unit number. Please try again
-      </ErrorMessage>
-    );
+    return <ErrorMessage>Sorry, that is not a valid unit number. Please try again</ErrorMessage>;
   }
 
   return (

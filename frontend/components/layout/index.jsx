@@ -1,10 +1,10 @@
-import React from "react";
-import Head from "next/head";
-import Footer from "../ui/footer";
-import Navbar from "../ui/navbar";
-import LayoutWrapper from "./elements";
-import styled from "styled-components";
-import { COLORS } from "../../styles/colors";
+import React from 'react';
+import Head from 'next/head';
+import Footer from '../ui/footer';
+import Navbar from '../ui/navbar';
+import LayoutWrapper from './elements';
+import styled from 'styled-components';
+import { COLORS } from '../../styles/colors';
 
 //styles live inside the elements file
 
@@ -13,7 +13,7 @@ const Layout = ({ children, title }) => {
     <LayoutWrapper>
       <Head>
         <title>{title}</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <BodyWrapper>{children}</BodyWrapper>

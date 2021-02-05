@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 //Checkbox styling is in a different file to make the form component lighter.
 //because we can't style a checkbox we have to hide the browers' and create/customize our own. See
@@ -18,8 +18,8 @@ const Icon = styled.svg`
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
 const HiddenCheckbox = styled.input.attrs({
-  type: "checkbox",
-  name: "myRadio",
+  type: 'checkbox',
+  name: 'myRadio',
 })`
   border: 0;
   clip: rect(0 0 0 0);
@@ -39,7 +39,7 @@ const StyledCheckbox = styled.div`
   background-image: linear-gradient(to bottom right, #4a21bd, white);
   border-radius: 3px;
   ${Icon} {
-    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+    visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
   }
 `;
 

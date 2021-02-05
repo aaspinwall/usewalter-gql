@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const VoteOption = styled.div`
   border-top-left-radius: 20px;
@@ -13,7 +13,7 @@ const VoteOption = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 2px 2px #888888;
-  background: ${(props) => (props.checked ? "white" : "#a6abd3")};
+  background: ${(props) => (props.checked ? 'white' : '#a6abd3')};
 `;
 
 const OptionName = ({ checked, index, ...props }) => {

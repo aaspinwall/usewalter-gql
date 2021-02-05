@@ -1,7 +1,7 @@
-import React, { useEffect, useState, createRef } from "react";
-import { useInterval } from "../../utilities/hooks";
-import { COLORS } from "../../styles/colors";
-import styled from "styled-components";
+import React, { useEffect, useState, createRef } from 'react';
+import { useInterval } from '../../utilities/hooks';
+import { COLORS } from '../../styles/colors';
+import styled from 'styled-components';
 
 const StyledProgress = styled.div`
   .circular-chart {
@@ -60,7 +60,7 @@ const Timer = ({ time, onTimeIsUp, ...props }) => {
     e.preventDefault();
     const userTimeElement = userTime.current;
     setSeconds(userTimeElement.value);
-    userTimeElement.value = "";
+    userTimeElement.value = '';
   };
 
   const refresh = () => {
@@ -80,7 +80,7 @@ const Timer = ({ time, onTimeIsUp, ...props }) => {
     if (canVote) {
       refresh();
     } else {
-      onTimeIsUp("TIME IS UP!");
+      onTimeIsUp('TIME IS UP!');
     }
   }, 1000);
 

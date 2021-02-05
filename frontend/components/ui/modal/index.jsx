@@ -1,14 +1,14 @@
-import React from "react";
-import ClientOnlyPortal from "./clientOnlyPortal";
-import { COLORS } from "../../../styles/colors";
+import React from 'react';
+import ClientOnlyPortal from './clientOnlyPortal';
+import { COLORS } from '../../../styles/colors';
 
 const Modal = ({ children, open }) => {
   return (
     <>
       {open && (
         <ClientOnlyPortal>
-          <div className='backdrop'>
-            <div className='modal'>{children}</div>
+          <div className="backdrop">
+            <div className="modal">{children}</div>
             <style jsx>{`
               :global(body) {
                 overflow: hidden;

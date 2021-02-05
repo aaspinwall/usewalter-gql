@@ -1,6 +1,6 @@
-import React from "react";
-import emailjs from "emailjs-com";
-import styled from "styled-components";
+import React from 'react';
+import emailjs from 'emailjs-com';
+import styled from 'styled-components';
 const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
@@ -12,17 +12,15 @@ export default function ContactForm() {
   // const h = window.innerHeight;
   function sendEmail(e) {
     e.preventDefault();
-    emailjs
-      .sendForm(`${SERVICE_ID}`, "template_pofehym", e.target, `${USER_ID}`)
-      .then(
-        (result) => {
-          console.log(result.text);
-          setEmailStatus(true);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    emailjs.sendForm(`${SERVICE_ID}`, 'template_pofehym', e.target, `${USER_ID}`).then(
+      (result) => {
+        console.log(result.text);
+        setEmailStatus(true);
+      },
+      (error) => {
+        console.log(error.text);
+      },
+    );
 
     e.target.reset();
   }
@@ -30,28 +28,22 @@ export default function ContactForm() {
   return (
     <Wrapper>
       <Title>Contact Us</Title>
-      <Form id='contact' className='contact-form' onSubmit={sendEmail}>
+      <Form id="contact" className="contact-form" onSubmit={sendEmail}>
         <div>
           <Elem>
-            <Input type='text' placeholder='Name' name='name' />
+            <Input type="text" placeholder="Name" name="name" />
           </Elem>
           <Elem>
-            <Input type='email' placeholder='Email Address' name='email' />
+            <Input type="email" placeholder="Email Address" name="email" />
           </Elem>
           <Elem>
-            <Input type='text' placeholder='Subject' name='subject' />
+            <Input type="text" placeholder="Subject" name="subject" />
           </Elem>
           <Elem>
-            <Text
-              id=''
-              cols='40'
-              rows='8'
-              placeholder=' Your message'
-              name='message'
-            ></Text>
+            <Text id="" cols="40" rows="8" placeholder=" Your message" name="message"></Text>
           </Elem>
-          <div className='submit-contact'>
-            <Send type='submit' value='Send Message'></Send>
+          <div className="submit-contact">
+            <Send type="submit" value="Send Message"></Send>
           </div>
         </div>
         {emailStatus && <p>Thanks for reaching out!</p>}
@@ -103,7 +95,7 @@ const Input = styled.input`
   width: 100%;
   ::placeholder {
     color: black;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     padding: 1px;
   }
 `;
@@ -115,11 +107,11 @@ const Text = styled.textarea`
   color: black;
   border-radius: 5px;
   padding: 8px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 
   ::placeholder {
     color: black;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   }
 `;
 

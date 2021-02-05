@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 //Little behaviour I couldn't get rid of, when clicking repeatedly on a box(because every does that), the text becomes selected.
 
 //for now we use dummy data to display the voting choices
 //Once everything is wired up we will have to change some names in the return.
 // ie: votingOptions will become => voteOptions
-import votingOptions from "./dummydata.json";
+import votingOptions from './dummydata.json';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Checkbox from "./checkbox";
+import Checkbox from './checkbox';
 
-import OptionName from "./OptionName";
+import OptionName from './OptionName';
 
 const VotingForm = ({ voteOptions, timeLimit }) => {
-  const [checked, setChecked] = useState({ checked: false, option: "" });
+  const [checked, setChecked] = useState({ checked: false, option: '' });
 
   // this is to handle wether the input is checked or not for the styling.
   // And also associate the voted option to the correct index.
@@ -36,7 +36,7 @@ const VotingForm = ({ voteOptions, timeLimit }) => {
     e.preventDefault();
     //graphql submit poutine here
     if (getTruthyValue === false) {
-      alert("Seems like you did not vote for anything");
+      alert('Seems like you did not vote for anything');
     } else {
       alert(checked.option);
     }
@@ -57,11 +57,7 @@ const VotingForm = ({ voteOptions, timeLimit }) => {
                     onChange={() => handleCheckBox(index, option)}
                   />
                 </label>
-                <OptionName
-                  checked={{ ...checked }}
-                  index={index}
-                  onChange={() => handleCheckBox(index)}
-                >
+                <OptionName checked={{ ...checked }} index={index} onChange={() => handleCheckBox(index)}>
                   {option}
                 </OptionName>
               </OptionSelection>

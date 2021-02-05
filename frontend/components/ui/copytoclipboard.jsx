@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import styled, { keyframes, css } from "styled-components";
-import { COLORS } from "../../styles/colors";
+import React, { useState, useRef } from 'react';
+import styled, { keyframes, css } from 'styled-components';
+import { COLORS } from '../../styles/colors';
 
 // Reverted to using both clipboard_api and execCommand
 // we pass the text string as  props to the child component CopyToClipBoardButton
@@ -30,14 +30,14 @@ const CopyToClipBoardButton = ({ text }) => {
     //if the clipboard_api is not supported we use the ol' excCommand to copy to clipboard.
     if (!navigator.clipboard) {
       inputRef.current.select();
-      document.execCommand("copy");
+      document.execCommand('copy');
     }
     const textToCopy = inputRef.current.innerText;
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopy(true);
     } catch (err) {
-      console.log("Failed to copy:", err);
+      console.log('Failed to copy:', err);
     }
   };
   return (
@@ -45,7 +45,7 @@ const CopyToClipBoardButton = ({ text }) => {
       <LinkToCopy ref={inputRef}>{text.slice(7)}</LinkToCopy>
       {copy ? (
         <CopiedWrapper>
-          <span className={"checked"}>Copied!</span>
+          <span className={'checked'}>Copied!</span>
         </CopiedWrapper>
       ) : (
         <CopyWrapper onClick={() => handleClick()}>

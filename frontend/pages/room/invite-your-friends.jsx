@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import styled from "styled-components";
-import Head from "next/head";
-import { COLORS } from "../../styles/colors";
+import React from 'react';
+import Link from 'next/link';
+import styled from 'styled-components';
+import Head from 'next/head';
+import { COLORS } from '../../styles/colors';
 
 export default function InviteYourFriends() {
   return (
@@ -17,13 +17,13 @@ export default function InviteYourFriends() {
         <p>or</p>
         <p>Share to social media</p>
         <SocialMediaContainer>
-          <Link href={"/"}>Instagram</Link>
-          <Link href={"/"}>Facebook</Link>
-          <Link href={"/"}>Twitter</Link>
-          <Link href={"/"}>LinkedIn</Link>
-          <Link href={"/"}>What's App</Link>
-          <Link href={"/"}>Snapchat</Link>
-          <Link href={"/"}>Reddit</Link>
+          <Link href={'/'}>Instagram</Link>
+          <Link href={'/'}>Facebook</Link>
+          <Link href={'/'}>Twitter</Link>
+          <Link href={'/'}>LinkedIn</Link>
+          <Link href={'/'}>What's App</Link>
+          <Link href={'/'}>Snapchat</Link>
+          <Link href={'/'}>Reddit</Link>
         </SocialMediaContainer>
         <button>Go To Voting</button>
       </FormContainer>
