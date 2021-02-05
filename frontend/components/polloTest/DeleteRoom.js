@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from '@apollo/client';
 
 export const DELETE_VOTING_ROOM = gql`
   mutation deleteRoom($id: String!) {

@@ -4,6 +4,12 @@ import { COLORS } from '../../styles/colors';
 //These styles are the default nextjs ones, we'll be changing them as we go
 
 const LayoutWrapper = styled.div`
+  .spaced {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .center {
     display: flex;
     flex-direction: column;

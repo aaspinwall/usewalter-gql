@@ -1,7 +1,7 @@
-import { gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { gql, useMutation } from '@apollo/client';
+import { useState } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 /* +++++ testing the "CreateUser endpoint" ++++ */
 
@@ -28,8 +28,8 @@ const ADD_USER = gql`
 
 const CreateUser = () => {
   /* ++++ form control ++++ */
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
 
   /* ++++ GraphQL Apollo Mutation query hook ++++ */
   /**
@@ -51,36 +51,28 @@ const CreateUser = () => {
               email: userEmail,
             },
           });
-          setUserEmail("");
-          setUserName("");
+          setUserEmail('');
+          setUserName('');
         }}
       >
         <label>
           user name:
-          <input
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
+          <input value={userName} onChange={(e) => setUserName(e.target.value)} />
         </label>
         <label>
           user email:
-          <input
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
-          />
+          <input value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
         </label>
         <button type="submit">Add user</button>
       </form>
       {data && (
         <div>
           <p>
-            response: {data.addUser.code},{" "}
-            {data.addUser.success ? "success" : "fail"}, {data.addUser.message}
+            response: {data.addUser.code}, {data.addUser.success ? 'success' : 'fail'}, {data.addUser.message}
           </p>
           {data.addUser.user && (
             <p>
-              userAdded: {data.addUser.user.name}, {data.addUser.user.email},{" "}
-              {data.addUser.user.id}
+              userAdded: {data.addUser.user.name}, {data.addUser.user.email}, {data.addUser.user.id}
             </p>
           )}
         </div>

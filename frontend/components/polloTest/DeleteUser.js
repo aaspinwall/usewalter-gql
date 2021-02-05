@@ -1,7 +1,7 @@
-import { gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { gql, useMutation } from '@apollo/client';
+import { useState } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // this is the query
 /***
@@ -20,7 +20,7 @@ const DELETE_USER = gql`
 
 const DeleteUser = () => {
   /* ++++ form control ++++ */
-  const [userID, setUserID] = useState("");
+  const [userID, setUserID] = useState('');
 
   /* ++++ GraphQL Apollo Mutation query hook ++++ */
   /**
@@ -41,7 +41,7 @@ const DeleteUser = () => {
               id: userID,
             },
           });
-          setUserID("");
+          setUserID('');
         }}
       >
         <label>
@@ -52,9 +52,7 @@ const DeleteUser = () => {
       </form>
       {data && (
         <p>
-          response: {data.deleteUser.code},{" "}
-          {data.deleteUser.success ? "success" : "fail"},{" "}
-          {data.deleteUser.message}
+          response: {data.deleteUser.code}, {data.deleteUser.success ? 'success' : 'fail'}, {data.deleteUser.message}
         </p>
       )}
     </div>

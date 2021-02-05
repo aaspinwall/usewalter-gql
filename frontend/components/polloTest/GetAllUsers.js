@@ -1,8 +1,8 @@
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql } from '@apollo/client';
 
-import SampleButton from "../ui/sample_button";
+import SampleButton from '../ui/sample_button';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // this is the query
 /***
@@ -46,12 +46,7 @@ const GetAllUsers = () => {
             </li>
           ))}
         </ul>
-        <SampleButton
-          onClick={() => refetch()}
-          size="small"
-          background="rgba(127,103,218,1)"
-          label="Button"
-        >
+        <SampleButton onClick={() => refetch()} size="small" background="rgba(127,103,218,1)" label="Button">
           refetch
         </SampleButton>
       </div>

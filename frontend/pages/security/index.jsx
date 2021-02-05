@@ -23,6 +23,11 @@ const Security = () => {
               <a>New delivery</a>
             </button>
           </Link>
+          <Link href="/">
+            <button>
+              <a>Log out</a>
+            </button>
+          </Link>
         </div>
         {seeAll ? <AllPackages /> : null}
       </section>

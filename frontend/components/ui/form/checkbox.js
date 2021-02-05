@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import styled from "styled-components";
-import { SubmitVote } from "../../../styles/button";
-import { ADD_VOTER_DATA } from "../../polloTest/GetRoomData";
-import { useMutation } from "@apollo/client";
-import Modal from "../../ui/modal";
-import Button from "../sample_button";
-import { SubmitVoteStyles } from "../../../styles/button";
-import { COLORS } from "../../../styles/colors";
-import { isNonEmptyArray } from "@apollo/client/utilities";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { SubmitVote } from '../../../styles/button';
+import { ADD_VOTER_DATA } from '../../polloTest/GetRoomData';
+import { useMutation } from '@apollo/client';
+import Modal from '../../ui/modal';
+import Button from '../sample_button';
+import { SubmitVoteStyles } from '../../../styles/button';
+import { COLORS } from '../../../styles/colors';
+import { isNonEmptyArray } from '@apollo/client/utilities';
 
 const CheckboxForm = ({ voteOptions, roomID }) => {
   const [addVoterData] = useMutation(ADD_VOTER_DATA);
@@ -17,7 +17,7 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
   const [radioCheck, setRadioCheck] = useState(false);
 
   const handleRadioClick = () => {
-    const radioButtons = document.getElementsByName("vote-options");
+    const radioButtons = document.getElementsByName('vote-options');
     radioButtons.forEach((radio) => {
       if (radio.checked) {
         setRadioCheck(radio.value);
@@ -29,7 +29,7 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
     const res = await addVoterData({
       variables: {
         id: roomID,
-        name: localStorage.getItem("name"),
+        name: localStorage.getItem('name'),
         option: radioCheck,
       },
     });
@@ -45,19 +45,14 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
   return (
     <Container>
       <form>
-        <fieldset id={"vote-options"} className={"radio-container"}>
+        <fieldset id={'vote-options'} className={'radio-container'}>
           {voteOptions.map((option, index) => {
             return (
               <div key={`vote-option-${index}`} className="vote-option">
                 <label htmlFor={option}>
                   {option}
-                  <input
-                    type="radio"
-                    name="vote-options"
-                    value={option}
-                    onClick={handleRadioClick}
-                  />
-                  <span className={"radio-check"}></span>
+                  <input type="radio" name="vote-options" value={option} onClick={handleRadioClick} />
+                  <span className={'radio-check'}></span>
                 </label>
               </div>
             );
@@ -81,11 +76,11 @@ const CheckboxForm = ({ voteOptions, roomID }) => {
           </Modal>
         ) : (
           <Button
-            children={"Submit Your Vote!"}
+            children={'Submit Your Vote!'}
             disabled={!radioCheck}
             onClick={handleVoteSubmit}
             styles={SubmitVoteStyles}
-            style={radioCheck && { display: "none" }}
+            style={radioCheck && { display: 'none' }}
           />
         )}
       </form>
@@ -158,7 +153,7 @@ const Container = styled.div`
         background-color: ${COLORS.PURPLES.LIGHT};
       }
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         display: none;
       }
