@@ -293,6 +293,7 @@ type Query {
   post(where: PostWhereUniqueInput!): Post
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int): [Resident!]!
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int): [User!]!
+  validateUserCredentials(email: String, password: String): User
 }
 
 enum QueryMode {
@@ -420,6 +421,7 @@ input StringNullableFilter {
 type User {
   email: String!
   id: Int!
+  password: String!
   posts: [Post!]!
   profile: Profile
   resident: Resident

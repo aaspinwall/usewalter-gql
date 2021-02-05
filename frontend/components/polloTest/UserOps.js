@@ -16,6 +16,15 @@ export const SIGN_UP_USER = gql`
   }
 `;
 
+export const VALIDATE_USER_CREDENTIALS = gql`
+  query validate($email: String!, $password: String!) {
+    validateUserCredentials(email: $email, password: $password) {
+      id
+      superuser
+    }
+  }
+`;
+
 export const ADD_VOTER_DATA = gql`
   mutation addVoterData($id: String!, $name: String!, $option: String!) {
     addVoterData(voterData: { name: $name, option: $option }, roomID: $id) {

@@ -20,25 +20,34 @@ const fakeTime = makeTime()
 const prisma = new PrismaClient()
 
 export async function makeUser(isAdmin = false) {
+  const residentData = {
+    email: fakeEmail,
+    password: fakePassword,
+    superuser: false,
+    resident: {
+      create: {
+        name: fakeName,
+        unit: fakeUnit,
+        telephone: fakeTelephone,
+        timeForNotif: fakeTime,
+      },
+    },
+  }
+
+  const adminData = {
+    email: fakeEmail,
+    password: fakePassword,
+    superuser: true,
+  }
+
   try {
     const user = await prisma.user.create({
-      data: {
-        email: fakeEmail,
-        password: fakePassword,
-        superuser: isAdmin,
-        resident: {
-          create: {
-            name: fakeName,
-            unit: fakeUnit,
-            telephone: fakeTelephone,
-            timeForNotif: fakeTime,
-          },
-        },
-      },
+      data: isAdmin ? adminData : residentData,
     })
     console.log(user)
     return user
   } catch (error) {
     console.log('Something went wrong when trying to create a new user', error)
+    return error
   }
 }

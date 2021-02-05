@@ -17,6 +17,7 @@ const User = objectType({
     t.model.posts({ pagination: false })
     t.model.profile()
     t.model.resident()
+    t.model.password()
   },
 })
 
@@ -90,6 +91,24 @@ const Query = objectType({
       type: 'Resident',
       resolve: (_, args, ctx) => {
         return ctx.prisma.resident.findMany({ take: 100 })
+      },
+    })
+
+    t.field('validateUserCredentials', {
+      type: 'User',
+      args: {
+        email: stringArg(),
+        password: stringArg(),
+      },
+      resolve: (_, { email, password }, ctx) => {
+        return ctx.prisma.user.findFirst({
+          where: {
+            AND: [
+              { email: { equals: email } },
+              { password: { equals: password } },
+            ],
+          },
+        })
       },
     })
 

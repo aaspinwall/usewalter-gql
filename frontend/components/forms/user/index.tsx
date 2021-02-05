@@ -7,8 +7,8 @@ const content = {
     password: "password*",
   },
   initialValues: {
-    email: "",
-    password: "",
+    email: "edgardo_gibson95@hotmail.com",
+    password: "ZoEuHbyF51gq6NY",
   },
 };
 
@@ -29,7 +29,7 @@ const validate = async (values) => {
   return errors;
 };
 
-const UserForm = ({ callback }) => {
+const UserForm = ({ callback, invalidMessage }) => {
   React.useEffect(() => {
     const inputs = document.getElementsByTagName("input");
     Object.values(inputs).forEach((v) => {
@@ -80,7 +80,9 @@ const UserForm = ({ callback }) => {
 
             <div>{isValidating ? "...Validating" : null}</div>
             <div>
-              {isSubmitting ? "We're working on your request..." : null}
+              {isSubmitting
+                ? invalidMessage || "We're working on your request..."
+                : null}
             </div>
           </Form>
         )}
