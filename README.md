@@ -12,7 +12,7 @@ Tech stack:
 - **Styled Components** for styling
 - **Formik** to handle forms and validation
 - **Apollo Client** to query the server
-
+  
 ### Backend
 
 - **Apollo Server** manages the server and integrates apollo as a middleware
