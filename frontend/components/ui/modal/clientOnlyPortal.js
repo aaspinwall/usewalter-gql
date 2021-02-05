@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const ClientOnlyPortal = ({ children, selector }) => {
   const ref = useRef();
@@ -7,8 +7,8 @@ const ClientOnlyPortal = ({ children, selector }) => {
 
   useEffect(() => {
     let container;
-    const rootContainer = document.createElement("div");
-    const parentElem = document.querySelector("#__next");
+    const rootContainer = document.createElement('div');
+    const parentElem = document.querySelector('#__next');
     parentElem.appendChild(rootContainer);
     container = rootContainer;
     ref.current = container;

@@ -1,8 +1,8 @@
-import Head from "next/head";
-import Link from "next/link";
-import styled from "styled-components";
-import { COLORS } from "../styles/colors";
-import IconCircle from "../components/ui/icon";
+import Head from 'next/head';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { COLORS } from '../styles/colors';
+import IconCircle from '../components/ui/icon';
 
 export default function LandingPage() {
   return (
@@ -10,28 +10,24 @@ export default function LandingPage() {
       <Head>
         <title>useWalter || Package Delivery System</title>
       </Head>
-      <section className='two'>
-        <img src='/imgs/package.png' />
+      <section className="two">
+        <img src="/imgs/package.png" />
         <div>
           <h1>Welcome</h1>
           <p>
-            Click on the resident button to log into your account. You'll be
-            able to see your packages and change your profile and notification
-            settings.
+            Click on the resident button to log into your account. You'll be able to see your packages and change your
+            profile and notification settings.
           </p>
-          <p>
-            Security personnel is able to register new packages and update their
-            status.
-          </p>
+          <p>Security personnel is able to register new packages and update their status.</p>
         </div>
       </section>
       <div>
-        <Link href='/residents'>
+        <Link href="/residents">
           <button>
             <a>Resident</a>
           </button>
         </Link>
-        <Link href='/security'>
+        <Link href="/security">
           <button>
             <a>Security</a>
           </button>

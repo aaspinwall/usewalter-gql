@@ -1,4 +1,4 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from '@apollo/client';
 
 export const CREATE_RESIDENT_ACCOUNT = gql`
   mutation createResidentAccount(
@@ -10,9 +10,7 @@ export const CREATE_RESIDENT_ACCOUNT = gql`
     $password: String!
     $superuser: Boolean
   ) {
-    signupUser(
-      data: { email: $email, password: $password, superuser: $superuser }
-    ) {
+    signupUser(data: { email: $email, password: $password, superuser: $superuser }) {
       id
       email
       superuser
@@ -33,13 +31,7 @@ export const CREATE_RESIDENT_ACCOUNT = gql`
 `;
 
 export const CREATE_RESIDENT = gql`
-  mutation createOneResident(
-    $unit: Int!
-    $name: String!
-    $telephone: String
-    $timeForNotif: String
-    $email: String!
-  ) {
+  mutation createOneResident($unit: Int!, $name: String!, $telephone: String, $timeForNotif: String, $email: String!) {
     createOneResident(
       data: {
         unit: $unit
@@ -71,27 +63,6 @@ export const GET_RESIDENT_BY_ID = gql`
           description
         }
       }
-    }
-  }
-`;
-
-export const ADD_VOTER_DATA = gql`
-  mutation addVoterData($id: String!, $name: String!, $option: String!) {
-    addVoterData(voterData: { name: $name, option: $option }, roomID: $id) {
-      roomData {
-        id
-        name
-        timeLimit
-        voteOptions
-        voters {
-          name
-          voteData
-        }
-      }
-      option
-      code
-      success
-      message
     }
   }
 `;
