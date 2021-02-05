@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
-import { Delivered } from "../../components/ui/widgets";
-import IconCircle from "../../components/ui/icon";
-import Link from "next/link";
-import styled from "styled-components";
-import Card from "../../components/ui/card";
-import { Results } from "../../components/ui/results";
-import {
-  GET_PACKAGE_BY_ID,
-  SET_PACKAGE_TO_DELIVERED,
-} from "../../components/polloTest/GetPackages";
-import Loading from "../../components/ui/Loading";
-import { useLazyQuery, useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
-import Modal from "../../components/ui/modal";
+import { useEffect, useState } from 'react';
+import { Delivered } from '../../components/ui/widgets';
+import IconCircle from '../../components/ui/icon';
+
+import styled from 'styled-components';
+import { Results } from '../../components/ui/results';
+import { GET_PACKAGE_BY_ID, SET_PACKAGE_TO_DELIVERED } from '../../components/polloTest/GetPackages';
+import Loading from '../../components/ui/Loading';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
+import Modal from '../../components/ui/modal';
 
 export default function VotingRoom() {
   const { query } = useRouter();
+  const router = useRouter();
   const [setToDelivered] = useMutation(SET_PACKAGE_TO_DELIVERED);
-  // timerProps are passed to the Timer component to style the countdown animation
   const [pakData, setPakData] = useState(null);
   const [showModal, setModal] = useState(false);
   const [pakResults, { loading, data }] = useLazyQuery(GET_PACKAGE_BY_ID, {
@@ -56,16 +52,23 @@ export default function VotingRoom() {
     <Container>
       <Description>Results page</Description>
 
-      <Modal open={showModal} className='fill'>
+      <Modal open={showModal} className="fill">
         <h2>Thanks!</h2>
         <p>Keep doing a great job!</p>
-        <button onClick={() => setModal(!showModal)}>Close</button>
+        <button
+          onClick={() => {
+            setModal(!showModal);
+            router.push('/security');
+          }}
+        >
+          Close
+        </button>
       </Modal>
 
       <Top>
-        <IconCircle icon={"/imgs/package.png"} size='large' />
+        <IconCircle icon={'/imgs/package.png'} size="large" />
         <div>
-          <div className=''>
+          <div className="">
             <h3>{description}</h3>
           </div>
           <div>For: Unit# {unit}</div>
@@ -73,10 +76,10 @@ export default function VotingRoom() {
       </Top>
 
       <div>
-        <Results className='box title-light ' key={`packages-${id}`}>
+        <Results className="box title-light " key={`packages-${id}`}>
           <div>{description}</div>
           <div>{unit}</div>
-          <div>{delivered ? "true" : "false"}</div>
+          <div>{delivered ? 'true' : 'false'}</div>
           <Delivered status={delivered} />
         </Results>
         <button onClick={handleDelivered}>Mark as delivered</button>

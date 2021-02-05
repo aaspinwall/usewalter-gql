@@ -6,7 +6,8 @@
     "dev:frontend": "cd frontend && yarn dev",
     "start:backend": "cd backend && yarn && yarn generate",
     "start:frontend": "cd frontend && yarn",
-    "lint": "eslint **/*.{js,jsx,ts} --ignore-path .eslintignore --quiet --fix"
+    "lint": "eslint **/*.{js,jsx,ts} --ignore-path .eslintignore --quiet --fix",
+    "lint:action": "eslint . --ignore-path .eslintignore --quiet --fix"
   },
   "name": "usewalter-app",
   "version": "1.0.0",
