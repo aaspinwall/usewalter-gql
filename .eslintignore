@@ -2,6 +2,13 @@
 **/tmp/**
 **/lib/**
 **/node_modules/**
+
+# Prisma auto-generated
+**/generated/**
+context.ts
+
+
 yarn.lock
 package.json
 *.md
+
