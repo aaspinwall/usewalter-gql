@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import NewPackageForm from '../../components/forms/pack';
-import { CREATE_PACKAGE } from '../../components/polloTest/CreatePackage';
+import { CREATE_PACKAGE } from '../../components/polloTest/PackageOps';
 import { useMutation } from '@apollo/client';
 
 const Success = ({ pak }) => {
