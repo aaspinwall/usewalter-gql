@@ -4,7 +4,7 @@
 
 ## About the project
 
-Tech stack:
+#### Tech stack:
 
 ### Frontend (JSX and Typescript)
 
