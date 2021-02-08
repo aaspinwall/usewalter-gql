@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Loading from '../../components/ui/Loading';
+import Loading from '../../components/ui/loading';
 import { Delivered } from '../../components/ui/widgets';
 import { Results } from '../../components/ui/results';
 import { GET_ALL_PACKAGES } from '../../components/polloTest/PackageOps';
 import { useLazyQuery } from '@apollo/client';
 
-const GetData = () => {
+const GetAllPackages = () => {
   const [packageData, setPackageData] = useState(null);
   const [reversed, setReversed] = useState(null);
   const [roomResults, { loading, data }] = useLazyQuery(GET_ALL_PACKAGES, {
@@ -49,4 +49,4 @@ const GetData = () => {
   );
 };
 
-export default GetData;
+export default GetAllPackages;

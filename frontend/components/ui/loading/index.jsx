@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Loading = () => {
+const SpinnerLoader = () => {
   return (
     <Wrapper className="center">
       <div>please wait while we fetch your results...</div>
@@ -26,4 +26,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default SpinnerLoader;
