@@ -12,4 +12,4 @@ jobs:
           node-version: '12.x'
       - run: yarn install
       - run: yarn start
-      - uses: yarn lint:action
+      - uses: yarn lint
