@@ -4,7 +4,7 @@ import IconCircle from '../../components/ui/icon';
 
 import styled from 'styled-components';
 import { Results } from '../../components/ui/results';
-import { GET_PACKAGE_BY_ID, SET_PACKAGE_TO_DELIVERED } from '../../components/polloTest/GetPackages';
+import { GET_PACKAGE_BY_ID, SET_PACKAGE_TO_DELIVERED } from '../../components/polloTest/PackageOps';
 import Loading from '../../components/ui/Loading';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
