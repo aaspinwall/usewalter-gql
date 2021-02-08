@@ -7,9 +7,7 @@
     "start:backend": "cd backend && yarn && yarn generate",
     "start:frontend": "cd frontend && yarn",
     "test": "jest --no-cache --passWithNoTests ./*",
-    "lint": "eslint '**/*.{js,jsx,ts}' .eslintignore --quiet ",
-    "lint:classic": "eslint **/*.{js,jsx} --ignore-path .eslintignore --quiet --fix",
-    "lint:action": "eslint . --ignore-path .eslintignore --quiet --fix"
+    "lint": "eslint '**/*.{js,jsx,ts}' .eslintignore --quiet --fix"
   },
   "name": "usewalter-app",
   "version": "1.0.0",
