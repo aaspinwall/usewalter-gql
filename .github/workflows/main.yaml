@@ -9,14 +9,14 @@ jobs:
   shared:
     name: Build and test shared
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'shared')"
+    if: "contains(github.event.head_commit.message, 'shared*')"
     steps:
       - run: echo 'you got to shared'
 
   shared-web:
     name: Build and test shared-web
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '+(*-web|shared-web)')"
+    if: "contains(github.event.head_commit.message, '-web')"
     steps:
       - run: echo 'you got to shared-web'
 
