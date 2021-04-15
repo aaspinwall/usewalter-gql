@@ -6,10 +6,23 @@ on:
       - actions
 
 jobs:
-  main:
-    name: Build and test
+  manager:
+    name: Build and test manager
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'shared')"
+    if: "contains(github.event.head_commit.message, 'manager')"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+      - run: yarn install
+      - run: yarn start
+      - run: yarn lint
+
+  resident:
+    name: Build and test resident
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'resident')"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
