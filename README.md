@@ -1,3 +1,4 @@
+test
 
 # Welcome to UseWalter Package Delivery System!
 
@@ -14,7 +15,7 @@ Tech stack:
 - **Styled Components** for styling
 - **Formik** to handle forms and validation
 - **Apollo Client** to query the server
-  
+
 ### Backend (Typescript)
 
 - **Apollo Server** manages the server and integrates apollo as a middleware
@@ -27,14 +28,13 @@ Tech stack:
 - **Eslint + Prettier** to check code formatting and enforce styling rules.
 - **Github actions** running on pull requests. These make sure the code that is being submitted passes the linting rules.
 
-
-**You'll be up and running in no time!** 
+**You'll be up and running in no time!**
 
 But first, let's get you setup.
 
 ## Getting started
 
-Clone this repository and install the dependencies using `yarn` 
+Clone this repository and install the dependencies using `yarn`
 
 Run the application with `yarn start` (note: this will install the dependencies for the frontend and backend, it might take a while when you do for the first time. Be patient 😊
 
@@ -61,12 +61,10 @@ This generates a new user and fills the profile. It looks like this:
       },
 ```
 
-
-
 Create a new user (admin)
 `http://localhost:4000/prisma?admin=true`
 
-### Backend 
+### Backend
 
 Our endpoints:
 
@@ -78,10 +76,10 @@ If you want to modify the data model, you can find it at: `backend/prisma/schema
 
 Remember that every time you make a change you'll have to run `npx prisma migrate dev --preview-feature`
 
-
 ### GraphQL Queries
 
 ### Get Resident Directory
+
 ```
 query {
   getResidentDirectory {
@@ -94,7 +92,7 @@ query {
 
 ```
 
-returns something like this: 
+returns something like this:
 
 ```
       {
@@ -129,7 +127,8 @@ query {
   }
 }
 ```
-returns all the packages, example: 
+
+returns all the packages, example:
 
 ```
  {
@@ -152,19 +151,13 @@ returns all the packages, example:
       },
 ```
 
-
-
-
-
 ## Environment variables
 
-Please note that you should replace the values on the file `
-/.env`, these should point to your Postgres server
+Please note that you should replace the values on the file ` /.env`, these should point to your Postgres server
 
 ## CI/CD
 
-If you would like to contribute to this project, make sure you run `yarn lint` before committing your code. When you submit your pull request, github will run an action that checks if your code is formatted properly.  
-
+If you would like to contribute to this project, make sure you run `yarn lint` before committing your code. When you submit your pull request, github will run an action that checks if your code is formatted properly.
 
 ## What's next?
 
