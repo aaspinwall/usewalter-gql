@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn install
-      - run: yarn start
       - run: yarn lint
 
   resident:
@@ -29,5 +28,4 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn install
-      - run: yarn start
       - run: yarn lint
