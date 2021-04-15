@@ -1,4 +1,4 @@
-name: ESLint
+name: Platform select
 
 on:
   push:
@@ -6,26 +6,37 @@ on:
       - actions
 
 jobs:
-  manager:
-    name: Build and test manager
+  shared:
+    name: Build and test shared
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'manager')"
+    if: "contains(github.event.head_commit.message, '+(shared)')"
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '12.x'
-      - run: yarn install
-      - run: yarn lint
+      - run: echo 'you got to shared'
+
+  shared-web:
+    name: Build and test shared-web
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '+(*-web|shared-web)')"
+    steps:
+      - run: echo 'you got to shared-web'
+
+  mobile:
+    name: Build and test mobile
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '+(*mobile*|shared)')"
+    steps:
+      - run: echo 'you got to mobile'
 
   resident:
     name: Build and test resident
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'resident')"
+    if: "contains(github.event.head_commit.message, '+(*shared*|*resident*)')"
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '12.x'
-      - run: yarn install
-      - run: yarn lint
+      - run: echo 'you got to resident'
+
+  manager:
+    name: Build and test manager
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '+(*shared*|*manager*)')"
+    steps:
+      - run: echo 'you got to manager'
