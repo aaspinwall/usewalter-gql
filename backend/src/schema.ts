@@ -163,6 +163,39 @@ const Mutation = objectType({
     t.crud.createOnePackage()
     t.crud.updateOnePackage()
 
+    t.field('makeUser', {
+      type: 'User',
+      args: {
+        email: nonNull(stringArg()),
+      },
+      resolve: (_, { email }, ctx) => {
+        return ctx.prisma.user.create({
+          data: {
+            email,
+            password: '1234',
+          },
+        })
+      },
+    })
+
+    t.field('makeResident', {
+      type: 'Resident',
+      args: {
+        email: nonNull(stringArg()),
+        name: nonNull(stringArg()),
+        unit: nonNull(intArg()),
+      },
+      resolve: (_, { email, name, unit }, ctx) => {
+        return ctx.prisma.resident.create({
+          data: {
+            email,
+            unit,
+            name,
+          },
+        })
+      },
+    })
+
     t.field('createDraft', {
       type: 'Post',
       args: {

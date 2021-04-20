@@ -47,6 +47,8 @@ type Mutation {
   createOneResident(data: ResidentCreateInput!): Resident!
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
+  makeResident(email: String!, name: String!, unit: Int!): Resident
+  makeUser(email: String!): User
   publish(id: Int): Post
   setDelivered(id: Int): Package
   signupUser(data: UserCreateInput!): User!
