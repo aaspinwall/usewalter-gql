@@ -36,7 +36,7 @@ jobs:
           contains(github.event.head_commit.message, '-web') ||
           contains(github.event.head_commit.message, 'other') ||
           contains(github.event.head_commit.message, 'shared') ||
-          contains(github.event.head_commit.message, 'monorepo') ||
+          contains(github.event.head_commit.message, 'monorepo')
         run: echo 'test shared-web'
 
       - name: Test manager-web
